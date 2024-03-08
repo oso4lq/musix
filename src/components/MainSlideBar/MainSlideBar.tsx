@@ -1,6 +1,7 @@
-import Image from "next/image";
-import styles from "@components/MainSlideBar/MainSlideBar.module.css"
+import styles from "./MainSlideBar.module.css"
 import classNames from "classnames";
+import Image from "next/image";
+
 export default function MainSlideBar() {
   return (
     <div className={classNames(styles.mainSidebar, styles.sidebar)}>

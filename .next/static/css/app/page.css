@@ -1,3 +1,12 @@
+/*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./src/components/Main/Main.module.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************/
+.Main_main__NTSgt {
+    flex: 1 1 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 /*!*****************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./src/components/Bar/Bar.module.css ***!
   \*****************************************************************************************************************************************************************************************************************************************************************************/
@@ -230,7 +239,7 @@
 /*!*****************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./src/components/BarVolume/BarVolume.module.css ***!
   \*****************************************************************************************************************************************************************************************************************************************************************************************/
-.BarVolume_barVolumeBlock__2B4Tc {
+.BarVolume_barVolume___EVsr {
     width: auto;
     display: flex;
     align-items: center;
@@ -262,6 +271,128 @@
   .BarVolume_volumeProgressLine__YSWbA {
     width: 109px;
   }
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./src/components/CenterBlock/CenterBlock.module.css ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************/
+.CenterBlock_mainCenterBlock__4x7fS {
+    width: 100px;
+    flex-grow: 3;
+    padding: 20px 40px 20px 111px;
+  }
+
+  .CenterBlock_centerBlockSearch__vbeYH {
+    width: 100%;
+    border-bottom: 1px solid #4e4e4e;
+    margin-bottom: 51px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .CenterBlock_centerBlockH2__it2Va {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 72px;
+    letter-spacing: -0.8px;
+    margin-bottom: 45px;
+  }
+  
+  .CenterBlock_centerBlockFilter__0ex1i {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 51px;
+  }
+  
+  .CenterBlock_centerBlockContent__wlogo {
+    display: flex;
+    flex-direction: column;
+    height: 800px;
+  }
+
+  .CenterBlock_filterTitle__AJnf3 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    margin-right: 15px;
+  }
+  
+  .CenterBlock_filterButton__SVdz5 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    border: 1px solid #ffffff;
+    border-radius: 60px;
+    padding: 6px 20px;
+  }
+  
+  .CenterBlock_filterButton__SVdz5:not(:last-child) {
+    margin-right: 10px;
+  }
+  
+  .CenterBlock_playlistTitleCol__3Dk8U {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 2px;
+    color: #696969;
+    text-transform: uppercase;
+  }
+  
+  .CenterBlock_playlistTitleSvg__XzWDA {
+    width: 12px;
+    height: 12px;
+    fill: transparent;
+    stroke: #696969;
+  }
+  
+  .CenterBlock_col01__Q6mcG {
+    width: 447px;
+  }
+  
+  .CenterBlock_col02__KKVtP {
+    width: 321px;
+  }
+  
+  .CenterBlock_col03__B0R39 {
+    width: 245px;
+  }
+  
+  .CenterBlock_col04___Y_f5 {
+    width: 60px;
+    text-align: end;}
+
+    .CenterBlock_contentTitle__XaxxE {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 24px;
+      }
+
+      .CenterBlock_searchText__5_xev {
+        flex-grow: 100;
+        background-color: transparent;
+        border: none;
+        padding: 13px 10px 14px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        color: #ffffff;
+      }
+
+      .CenterBlock_searchSvg__JUoai {
+        width: 17px;
+        height: 17px;
+        margin-right: 5px;
+        stroke: #ffffff;
+        fill: transparent;
+      }
 /*!*****************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./src/components/ContentPlaylist/ContentPlaylist.module.css ***!
   \*****************************************************************************************************************************************************************************************************************************************************************************************************/
@@ -561,128 +692,6 @@
     color: #696969;
   }
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./src/components/CenterBlock/CenterBlock.module.css ***!
-  \*********************************************************************************************************************************************************************************************************************************************************************************************/
-.CenterBlock_mainCenterBlock__4x7fS {
-    width: 100px;
-    flex-grow: 3;
-    padding: 20px 40px 20px 111px;
-  }
-
-  .CenterBlock_centerBlockSearch__vbeYH {
-    width: 100%;
-    border-bottom: 1px solid #4e4e4e;
-    margin-bottom: 51px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  
-  .CenterBlock_centerBlockH2__it2Va {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 64px;
-    line-height: 72px;
-    letter-spacing: -0.8px;
-    margin-bottom: 45px;
-  }
-  
-  .CenterBlock_centerBlockFilter__0ex1i {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 51px;
-  }
-  
-  .CenterBlock_centerBlockContent__wlogo {
-    display: flex;
-    flex-direction: column;
-    height: 800px;
-  }
-
-  .CenterBlock_filterTitle__AJnf3 {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    margin-right: 15px;
-  }
-  
-  .CenterBlock_filterButton__SVdz5 {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    border: 1px solid #ffffff;
-    border-radius: 60px;
-    padding: 6px 20px;
-  }
-  
-  .CenterBlock_filterButton__SVdz5:not(:last-child) {
-    margin-right: 10px;
-  }
-  
-  .CenterBlock_playlistTitleCol__3Dk8U {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 24px;
-    letter-spacing: 2px;
-    color: #696969;
-    text-transform: uppercase;
-  }
-  
-  .CenterBlock_playlistTitleSvg__XzWDA {
-    width: 12px;
-    height: 12px;
-    fill: transparent;
-    stroke: #696969;
-  }
-  
-  .CenterBlock_col01__Q6mcG {
-    width: 447px;
-  }
-  
-  .CenterBlock_col02__KKVtP {
-    width: 321px;
-  }
-  
-  .CenterBlock_col03__B0R39 {
-    width: 245px;
-  }
-  
-  .CenterBlock_col04___Y_f5 {
-    width: 60px;
-    text-align: end;}
-
-    .CenterBlock_contentTitle__XaxxE {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 24px;
-      }
-
-      .CenterBlock_searchText__5_xev {
-        flex-grow: 100;
-        background-color: transparent;
-        border: none;
-        padding: 13px 10px 14px;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 24px;
-        color: #ffffff;
-      }
-
-      .CenterBlock_searchSvg__JUoai {
-        width: 17px;
-        height: 17px;
-        margin-right: 5px;
-        stroke: #ffffff;
-        fill: transparent;
-      }
-/*!*********************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./src/components/FilterBlock/FilterBlock.module.css ***!
   \*********************************************************************************************************************************************************************************************************************************************************************************************/
 .FilterBlock_centerBlockFilter__UsY_5 {
@@ -842,15 +851,6 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-  }
-/*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./src/components/Main/Main.module.css ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************/
-.Main_main__NTSgt {
-    flex: 1 1 auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
   }
 /*!*******************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./src/app/page.module.css ***!

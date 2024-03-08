@@ -1,9 +1,9 @@
 import styles from "./BarVolume.module.css";
 import classNames from "classnames";
 
-export default function BarVolumeBlock() {
+export default function BarVolume() {
   return (
-    <div className={classNames(styles.barVolumeBlock, styles.volume)}>
+    <div className={classNames(styles.barVolume, styles.volume)}>
       <div className={styles.volumeContent}>
         <div className={styles.volumeImage}>
           <svg className={styles.volumeSvg}>

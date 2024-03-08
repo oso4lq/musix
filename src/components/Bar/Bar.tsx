@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import styles from "./Bar.module.css";
-import { BarVolumeBlock } from "@/components/BarVolume";
+import { BarVolume } from "@/components/BarVolume";
 
 export default function Bar() {
   return (
@@ -80,7 +80,7 @@ export default function Bar() {
               </div>
             </div>
           </div>
-          <BarVolumeBlock />
+          <BarVolume />
         </div>
       </div>
     </div>

@@ -1,1 +1,1 @@
-export { default as BarVolumeBlock } from "./BarVolume"
+export { default as BarVolume } from "./BarVolume"

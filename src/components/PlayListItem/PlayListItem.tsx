@@ -1,4 +1,4 @@
-import styles from "@components/PlayListItem/PlayListItem.module.css";
+import styles from "./PlayListItem.module.css";
 import classNames from "classnames";
 
 export default function PlayListItem() {

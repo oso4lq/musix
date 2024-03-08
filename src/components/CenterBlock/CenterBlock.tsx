@@ -1,7 +1,7 @@
-import ContentPlaylist from "@components/ContentPlaylist/ContentPlaylist";
 import classNames from "classnames";
-import styles from "@components/CenterBlock/CenterBlock.module.css";
-import FilterBlock from "@components/FilterBlock/FilterBlock";
+import styles from "./CenterBlock.module.css";
+import { ContentPlaylist } from "@components/ContentPlaylist";
+import { FilterBlock } from "@/components/FilterBlock";
 
 export default function CenterBlock() {
   return (

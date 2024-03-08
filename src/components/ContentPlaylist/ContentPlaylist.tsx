@@ -1,6 +1,6 @@
-import styles from "@components/ContentPlaylist/ContentPlaylist.module.css";
-import PlayListItem from "@components/PlayListItem/PlayListItem";
+import styles from "./ContentPlaylist.module.css";
 import classNames from "classnames";
+import { PlayListItem } from "@components/PlayListItem";
 
 export default function ContentPlaylist() {
   return (

@@ -1,4 +1,4 @@
-import styles from "@components/FilterBlock/FilterBlock.module.css";
+import styles from "./FilterBlock.module.css";
 import classNames from "classnames";
 
 export default function FilterBlock() {
