@@ -5,15 +5,12 @@ import { CenterBlock } from "@/components/CenterBlock";
 import { MainSlideBar } from "@components/MainSlideBar";
 import { Nav } from "@components/Nav";
 
-export default function Main({ isLoaded }) {
+export default function Main() {
   return (
     <>
       <main className={styles.main}>
         <Nav />
-        {
-          isLoaded && (
-            <CenterBlock />
-          )}
+        <CenterBlock />
         <MainSlideBar />
       </main>
       <Bar />

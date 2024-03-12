@@ -42,7 +42,7 @@ export default function CenterBlock() {
             </svg>
           </div>
         </div>
-        <ContentPlaylist />
+        < ContentPlaylist />
       </div>
     </div>
   );

@@ -2,7 +2,7 @@ import { Track } from "@/interfaces/interfaces";
 
 const API_URL = "https://skypro-music-api.skyeng.tech/catalog/";
 
-export async function getTracks() {
+export async function getTracks(): Promise<Track[]> {
     try {
         const response = await fetch(API_URL + "track/all/");
         if (!response.ok) {
@@ -13,7 +13,8 @@ export async function getTracks() {
             }
         }
         const data = await response.json();
-        return data as Track[]; // Assuming data is an array of Track
+        console.log(data);
+        return data as Track[];
     } catch (error) {
         console.warn(error);
         throw error;
@@ -22,25 +23,25 @@ export async function getTracks() {
 
 
 //  DRAFT. add authorisation
-export async function addTrack({ X }) {
-    try {
-        const response = await fetch(API_URL`${id}/favorite/`, {
-            method: "POST",
-            body: JSON.stringify({
-                X,
-            }),
-        });
-        if (!response.ok) {
-            if (response.status === 400) {
-                throw new Error("Something went wrong");
-            } else {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-        }
-        return response.json();
-    } catch (error) {
-        alert("No internet connection. Try again later.");
-        console.warn(error);
-        throw error;
-    }
-}
+// export async function addTrack({ X }) {
+//     try {
+//         const response = await fetch(API_URL`${id}/favorite/`, {
+//             method: "POST",
+//             body: JSON.stringify({
+//                 X,
+//             }),
+//         });
+//         if (!response.ok) {
+//             if (response.status === 400) {
+//                 throw new Error("Something went wrong");
+//             } else {
+//                 throw new Error(`HTTP error! Status: ${response.status}`);
+//             }
+//         }
+//         return response.json();
+//     } catch (error) {
+//         alert("No internet connection. Try again later.");
+//         console.warn(error);
+//         throw error;
+//     }
+// }
