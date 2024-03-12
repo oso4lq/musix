@@ -23,7 +23,6 @@ const PlayListItem: React.FC<PlayListItemProps> = ({
   name,
   date,
 }) => {
-  console.log('track');
 
   return (
     <div className={styles.playlistItem}>

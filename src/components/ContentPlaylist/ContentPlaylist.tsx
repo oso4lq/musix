@@ -8,7 +8,6 @@ import { PlayListItem } from "@components/PlayListItem";
 const ContentPlaylist: React.FC = () => {
 
   const { tracks } = useContext(TracksContext);
-  // console.log(tracks);
   return (
     <div className={classNames(styles.contentPlaylist, styles.playlist)}>
       {tracks ? (

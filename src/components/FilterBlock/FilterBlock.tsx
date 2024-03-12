@@ -1,6 +1,8 @@
-import { useState } from "react";
 import styles from "./FilterBlock.module.css";
 import classNames from "classnames";
+import { useContext, useState } from "react";
+import { TracksContext } from "@/contexts/tracks-context";
+import { Track } from "@/interfaces/interfaces";
 
 export default function FilterBlock() {
 
@@ -21,6 +23,8 @@ export default function FilterBlock() {
     setIsGenreOpened((prevState) => !prevState);
   };
 
+  const { tracks } = useContext(TracksContext);
+
   return (
     <div className={classNames(styles.centerBlockFilter, styles.filter)}>
       <div className={styles.filterTitle}>Search for:</div>
@@ -37,8 +41,17 @@ export default function FilterBlock() {
       {
         isArtistOpened && (
           <div className={styles.filterBy}>
-            <span>Michael Jackson</span>
-            <span>Frank Sinatra</span>
+            {tracks ? (
+              <ul>
+                {tracks.map((track: Track) => (
+                  <p className={styles.filterByP} key={track.id}>
+                    {track.author}
+                  </p>
+                ))}
+              </ul>
+            ) : (
+              <p className={styles.playlistTitleCol}>No data...</p>
+            )}
           </div>
         )}
       <div
@@ -54,8 +67,17 @@ export default function FilterBlock() {
       {
         isDateOpened && (
           <div className={styles.filterBy}>
-            <span>1990</span>
-            <span>1970</span>
+            {tracks ? (
+              <ul>
+                {tracks.map((track: Track) => (
+                  <p className={styles.filterByP} key={track.id}>
+                    {track.release_date}
+                  </p>
+                ))}
+              </ul>
+            ) : (
+              <p className={styles.playlistTitleCol}>No data...</p>
+            )}
           </div>
         )}
       <div
@@ -73,8 +95,17 @@ export default function FilterBlock() {
       {
         isGenreOpened && (
           <div className={styles.filterBy}>
-            <span>pop</span>
-            <span>jazz</span>
+            {tracks ? (
+              <ul>
+                {tracks.map((track: Track) => (
+                  <p className={styles.filterByP} key={track.id}>
+                    {track.genre}
+                  </p>
+                ))}
+              </ul>
+            ) : (
+              <p className={styles.playlistTitleCol}>No data...</p>
+            )}
           </div>
         )}
     </div>
