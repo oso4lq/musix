@@ -33,6 +33,7 @@
   
   .filterButton {
     color: #fff;
+    background-color: transparent;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -40,6 +41,11 @@
     border: 1px solid #ffffff;
     border-radius: 60px;
     padding: 6px 20px;
+    transition: 0.2s;
+  }
+  .filterButton:hover {
+    border-color: #AD61FF;
+    color: #AD61FF;
   }
   
   .filterButton:not(:last-child) {
@@ -82,7 +88,7 @@
     margin-bottom: 8px;
     list-style-type: none;
   }
-  .artistCountPopUp {
+  .CountPopUp {
     display: flex;
     justify-content: center;
     align-items: center;    
@@ -91,10 +97,21 @@
     width: 26px;
     height: 26px;
     border-radius: 50%;
-    top: 231px;
-    left: 520px;
     background-color: #AD61FF;
     color: #FFFFFF;
+    transition: 1s;
+  }
+  .artist {
+    top: 231px;
+    left: 514px;
+  }
+  .year {
+    top: 231px;
+    left: 652px;
+  }
+  .genre {
+    top: 231px;
+    left: 744px;
   }
   .active {
     color:#AD61FF;

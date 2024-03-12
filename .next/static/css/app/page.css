@@ -592,6 +592,7 @@
   
   .FilterBlock_filterButton__Ze5zX {
     color: #fff;
+    background-color: transparent;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -599,6 +600,11 @@
     border: 1px solid #ffffff;
     border-radius: 60px;
     padding: 6px 20px;
+    transition: 0.2s;
+  }
+  .FilterBlock_filterButton__Ze5zX:hover {
+    border-color: #AD61FF;
+    color: #AD61FF;
   }
   
   .FilterBlock_filterButton__Ze5zX:not(:last-child) {
@@ -641,7 +647,7 @@
     margin-bottom: 8px;
     list-style-type: none;
   }
-  .FilterBlock_artistCountPopUp__R0ugE {
+  .FilterBlock_CountPopUp__4lg_q {
     display: flex;
     justify-content: center;
     align-items: center;    
@@ -650,10 +656,21 @@
     width: 26px;
     height: 26px;
     border-radius: 50%;
-    top: 231px;
-    left: 520px;
     background-color: #AD61FF;
     color: #FFFFFF;
+    transition: 1s;
+  }
+  .FilterBlock_artist__uok7p {
+    top: 231px;
+    left: 514px;
+  }
+  .FilterBlock_year__ZgJau {
+    top: 231px;
+    left: 652px;
+  }
+  .FilterBlock_genre__1rdAr {
+    top: 231px;
+    left: 744px;
   }
   .FilterBlock_active__7lqd2 {
     color:#AD61FF;
