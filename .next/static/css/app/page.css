@@ -612,10 +612,23 @@
     left: 500px;
     background-color: #313131;
     width: 248px;
-    height: 386px;
+    max-height: 386px;
+    overflow-y: auto;
     border-radius: 12px;
     padding: 34px;
     z-index: 7;
+    box-sizing: content-box; /* ??? */
+  }
+  .FilterBlock_filterBy__wikk5::-webkit-scrollbar {
+    width: 4px;
+    margin-left: -20px; /* ??? */
+  }
+  .FilterBlock_filterBy__wikk5::-webkit-scrollbar-thumb {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+  }
+  .FilterBlock_filterBy__wikk5::-webkit-scrollbar-track {
+    background-color: #4B4949;
   }
 
   .FilterBlock_filterByP__rgfNg {
@@ -626,6 +639,25 @@
     letter-spacing: 0em;
     text-align: left;
     margin-bottom: 8px;
+    list-style-type: none;
+  }
+  .FilterBlock_artistCountPopUp__R0ugE {
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    position: absolute;
+    font-size: 14px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    top: 231px;
+    left: 520px;
+    background-color: #AD61FF;
+    color: #FFFFFF;
+  }
+  .FilterBlock_active__7lqd2 {
+    color:#AD61FF;
+    border-color: #AD61FF;
   }
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./src/components/CenterBlock/CenterBlock.module.css ***!

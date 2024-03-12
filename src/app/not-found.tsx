@@ -9,6 +9,7 @@ export default function NotFound() {
         <h3 className={styles.containerH3}>
           Page not found
         </h3>
+        <p className={styles.containerP}>It may have been deleted or moved to another address</p>
         <Link className={styles.containerLink} href="/">
           <p className={styles.containerLinkP}>Back to main page</p>
         </Link>
