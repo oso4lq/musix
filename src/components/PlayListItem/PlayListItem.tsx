@@ -2,6 +2,7 @@ import styles from "./PlayListItem.module.css";
 import classNames from "classnames";
 
 export default function PlayListItem() {
+  
   return (
     <div className={styles.playlistItem}>
       <div className={classNames(styles.playlistTrack, styles.track)}>
@@ -28,10 +29,10 @@ export default function PlayListItem() {
           </a>
         </div>
         <div className={styles.trackTime}>
+          <span className={styles.trackTimeText}>4:44</span>
           <svg className={styles.trackTimeSvg}>
             <use href="/img/icon/sprite.svg#icon-like"></use>
           </svg>
-          <span className={styles.trackTimeText}>4:44</span>
         </div>
       </div>
     </div>

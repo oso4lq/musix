@@ -23,6 +23,7 @@
   }
 
   .filterTitle {
+    color:#fff;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -31,6 +32,7 @@
   }
   
   .filterButton {
+    color: #fff;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -42,4 +44,17 @@
   
   .filterButton:not(:last-child) {
     margin-right: 10px;
+  }
+
+  .filterBy {
+    display: block;
+    position: absolute;
+    top: 288px;
+    left: 464px;
+    background-color: #313131;
+    width: 248px;
+    height: 386px;
+    border-radius: 12px;
+    padding: 34px;
+    z-index: 7;
   }

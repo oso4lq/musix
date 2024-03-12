@@ -1,3 +1,4 @@
+"use client"
 import styles from "./Main.module.css";
 import { Bar } from "@components/Bar";
 import { CenterBlock } from "@/components/CenterBlock";
