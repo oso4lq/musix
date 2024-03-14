@@ -421,7 +421,7 @@
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./src/components/ContentPlaylist/ContentPlaylist.module.css ***!
   \*****************************************************************************************************************************************************************************************************************************************************************************************************/
 .ContentPlaylist_playlist__kH4eQ {
-    height: 700px;
+    height: 510px;
     overflow-y: auto;
     overflow-y: hidden;
 }
@@ -433,6 +433,8 @@
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    margin-bottom: 60px;
+
   }
   
   .ContentPlaylist_playlistTitleCol___3R0X {
@@ -566,14 +568,106 @@
     text-align: right;
     color: #696969;
   }
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./src/components/FilterBlockItem/FilterBlockItem.module.css ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************/
+.FilterBlockItem_filterButton__VstET {
+    color: #fff;
+    background-color: transparent;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    border: 1px solid #ffffff;
+    border-radius: 60px;
+    padding: 6px 20px;
+    transition: 0.2s;
+  }
+  .FilterBlockItem_filterButton__VstET:hover {
+    border-color: #AD61FF;
+    color: #AD61FF;
+  }
+  .FilterBlockItem_active__fo_ro {
+    color:#AD61FF;
+    border-color: #AD61FF;
+  }
+
+  .FilterBlockItem_filterBy__agniH {
+    display: block;
+    position: absolute;
+    top: 260px;
+    left: 440px;
+    background-color: #313131;
+    width: 240px;
+    max-height: 386px;
+    overflow-y: auto;
+    border-radius: 12px;
+    padding: 34px;
+    z-index: 7;
+    box-sizing: content-box; /* ??? */
+  }
+  .FilterBlockItem_filterBy__agniH::-webkit-scrollbar {
+    width: 4px;
+    margin-left: -20px; /* ??? */
+  }
+  .FilterBlockItem_filterBy__agniH::-webkit-scrollbar-thumb {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+  }
+  .FilterBlockItem_filterBy__agniH::-webkit-scrollbar-track {
+    background-color: #4B4949;
+  }
+  .FilterBlockItem_filterByP__gEZ70 {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-bottom: 8px;
+    list-style-type: none;
+  }
+
+  .FilterBlockItem_CountPopUp__LJyZH {
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+
+    position: relative;
+    top: 14px;
+    left: 60px;
+
+    font-size: 14px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: #AD61FF;
+    color: #FFFFFF;
+    transition: 1s;
+  }
+  
+  .FilterBlockItem_artist__UEFAC {
+    top: 231px;
+    left: 514px;
+  }
+  .FilterBlockItem_year__Tl6OA {
+    top: 231px;
+    left: 652px;
+  }
+  .FilterBlockItem_genre__G_Bro {
+    top: 231px;
+    left: 744px;
+  }
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./src/components/FilterBlock/FilterBlock.module.css ***!
   \*********************************************************************************************************************************************************************************************************************************************************************************************/
 .FilterBlock_centerBlockFilter__UsY_5 {
+    height: 10px;
     display: flex;
+    gap: 12px;
     flex-direction: row;
-    align-items: center;
-    margin-bottom: 51px;
+    align-items: flex-end;
+    margin-bottom: 50px;
   }
   
   .FilterBlock_centerBlockContent___cSEI {
@@ -589,93 +683,6 @@
     line-height: 24px;
     margin-right: 15px;
   }
-  
-  .FilterBlock_filterButton__Ze5zX {
-    color: #fff;
-    background-color: transparent;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    border: 1px solid #ffffff;
-    border-radius: 60px;
-    padding: 6px 20px;
-    transition: 0.2s;
-  }
-  .FilterBlock_filterButton__Ze5zX:hover {
-    border-color: #AD61FF;
-    color: #AD61FF;
-  }
-  
-  .FilterBlock_filterButton__Ze5zX:not(:last-child) {
-    margin-right: 10px;
-  }
-
-  .FilterBlock_filterBy__wikk5 {
-    display: block;
-    position: absolute;
-    top: 288px;
-    left: 500px;
-    background-color: #313131;
-    width: 248px;
-    max-height: 386px;
-    overflow-y: auto;
-    border-radius: 12px;
-    padding: 34px;
-    z-index: 7;
-    box-sizing: content-box; /* ??? */
-  }
-  .FilterBlock_filterBy__wikk5::-webkit-scrollbar {
-    width: 4px;
-    margin-left: -20px; /* ??? */
-  }
-  .FilterBlock_filterBy__wikk5::-webkit-scrollbar-thumb {
-    background-color: #FFFFFF;
-    border-radius: 10px;
-  }
-  .FilterBlock_filterBy__wikk5::-webkit-scrollbar-track {
-    background-color: #4B4949;
-  }
-
-  .FilterBlock_filterByP__rgfNg {
-    color: #fff;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    letter-spacing: 0em;
-    text-align: left;
-    margin-bottom: 8px;
-    list-style-type: none;
-  }
-  .FilterBlock_CountPopUp__4lg_q {
-    display: flex;
-    justify-content: center;
-    align-items: center;    
-    position: absolute;
-    font-size: 14px;
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    background-color: #AD61FF;
-    color: #FFFFFF;
-    transition: 1s;
-  }
-  .FilterBlock_artist__uok7p {
-    top: 231px;
-    left: 514px;
-  }
-  .FilterBlock_year__ZgJau {
-    top: 231px;
-    left: 652px;
-  }
-  .FilterBlock_genre__1rdAr {
-    top: 231px;
-    left: 744px;
-  }
-  .FilterBlock_active__7lqd2 {
-    color:#AD61FF;
-    border-color: #AD61FF;
-  }
 /*!*********************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./src/components/CenterBlock/CenterBlock.module.css ***!
   \*********************************************************************************************************************************************************************************************************************************************************************************************/
@@ -683,6 +690,7 @@
     width: 100px;
     flex-grow: 3;
     padding: 20px 40px 20px 111px;
+    height: 100vh;
   }
 
   .CenterBlock_centerBlockSearch__vbeYH {
@@ -714,7 +722,6 @@
   .CenterBlock_centerBlockContent__wlogo {
     display: flex;
     flex-direction: column;
-    height: 800px;
   }
 
   .CenterBlock_filterTitle__AJnf3 {
@@ -805,6 +812,7 @@
 .MainSlideBar_mainSidebar__5waYj {
     max-width: 418px;
     padding: 20px 90px 20px 78px;
+    height: 100vh;
   }
 
   .MainSlideBar_sidebarPersonal__QcVAo {
@@ -844,6 +852,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* height: 60vh; */
   }
   
   .MainSlideBar_sidebarItem__munk0 {

@@ -2,27 +2,7 @@ import React from "react";
 import styles from "./PlayListItem.module.css";
 import classNames from "classnames";
 
-interface PlayListItemProps {
-  id: number | undefined;
-  album: string | undefined;
-  author: string | undefined;
-  duration: number | undefined;
-  genre: string | undefined;
-  logo: string | undefined;
-  name: string | undefined;
-  date: string | undefined;
-}
-
-const PlayListItem: React.FC<PlayListItemProps> = ({
-  id,
-  album,
-  author,
-  duration,
-  genre,
-  logo,
-  name,
-  date,
-}) => {
+export default function PlayListItem({ e }: { e: trackType }) {
 
   return (
     <div className={styles.playlistItem}>
@@ -35,22 +15,22 @@ const PlayListItem: React.FC<PlayListItemProps> = ({
           </div>
           <div className={styles.trackTitleText}>
             <a className={styles.trackTitleLink} href="http://">
-              {name} <span className={styles.trackTitleSpan}></span>
+              {e.name} <span className={styles.trackTitleSpan}></span>
             </a>
           </div>
         </div>
         <div className={styles.trackAuthor}>
           <a className={styles.trackAuthorLink} href="http://">
-            {author}
+            {e.author}
           </a>
         </div>
         <div className={styles.trackAlbum}>
           <a className={styles.trackAlbumLink} href="http://">
-            {album}
+            {e.album}
           </a>
         </div>
         <div className={styles.trackTime}>
-          <span className={styles.trackTimeText}>{duration}</span>
+          <span className={styles.trackTimeText}>{e.duration_in_seconds}</span>
           <svg className={styles.trackTimeSvg}>
             <use href="/img/icon/sprite.svg#icon-like"></use>
           </svg>
@@ -59,5 +39,3 @@ const PlayListItem: React.FC<PlayListItemProps> = ({
     </div>
   );
 }
-
-export default PlayListItem;

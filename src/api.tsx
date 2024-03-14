@@ -1,8 +1,8 @@
-import { Track } from "@/interfaces/interfaces";
+import { TrackList } from "@/interfaces/interfaces";
 
 const API_URL = "https://skypro-music-api.skyeng.tech/catalog/";
 
-export async function getTracks(): Promise<Track[]> {
+export async function getTracks(): Promise<TrackList[]> {
     try {
         const response = await fetch(API_URL + "track/all/");
         if (!response.ok) {
@@ -14,13 +14,20 @@ export async function getTracks(): Promise<Track[]> {
         }
         const data = await response.json();
         console.log(data);
-        return data as Track[];
+        return data as TrackList[];
     } catch (error) {
         console.warn(error);
         throw error;
     }
 }
 
+// async function getData() {
+//     const response = await fetch(API_URL + "track/all/");
+//     if (!response.ok) {
+//         throw new Error('Error while getting data');
+//     }
+//     return response.json();
+// }
 
 //  DRAFT. add authorisation
 // export async function addTrack({ X }) {

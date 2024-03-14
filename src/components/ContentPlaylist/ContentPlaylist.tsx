@@ -1,36 +1,34 @@
-import React, { useContext } from "react";
+import React from "react";
 import styles from "./ContentPlaylist.module.css";
 import classNames from "classnames";
-import { TracksContext } from "@/contexts/tracks-context";
-import { Track } from "@/interfaces/interfaces";
 import { PlayListItem } from "@components/PlayListItem";
+import { getTracks } from "@/api";
 
-const ContentPlaylist: React.FC = () => {
+async function ContentPlaylist() {
 
-  const { tracks } = useContext(TracksContext);
+  let playlistArray: trackType[];
+  try {
+    playlistArray = await getTracks();
+  }
+  catch (error) {
+    console.error('Error getting the playlist', error);
+    playlistArray = [];
+  }
+
   return (
     <div className={classNames(styles.contentPlaylist, styles.playlist)}>
-      {tracks ? (
-        <ul>
-          {tracks.map((track: Track) => (
-
-            <PlayListItem
-              key={track.id}
-              id={track.id}
-              album={track.album}
-              duration={track.duration_in_seconds}
-              genre={track.genre}
-              logo={track.logo}
-              name={track.name}
-              author={track.author}
-              date={track.release_date}
-            />
-
-          ))}
-        </ul>
-      ) : (
+      {/* {playlistArray ? ( */}
+      {
+        playlistArray.map((e, index) => (
+          <PlayListItem
+            key={index}
+            e={e}
+          />
+        ))
+      }
+      {/* ) : (
         <p className={styles.playlistTitleCol}>Loading tracks...</p>
-      )}
+      )} */}
     </div>
   );
 };
