@@ -4,6 +4,7 @@
     -ms-flex-positive: 3;
     flex-grow: 3;
     padding: 20px 40px 20px 111px;
+    height: 100vh;
   }
 
   .centerBlockSearch {
@@ -23,6 +24,7 @@
   }
   
   .centerBlockH2 {
+    color: #FFF;
     font-style: normal;
     font-weight: 400;
     font-size: 64px;
@@ -53,7 +55,6 @@
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-    height: 800px;
   }
 
   .filterTitle {

@@ -7,7 +7,7 @@ export default function BarVolume() {
       <div className={styles.volumeContent}>
         <div className={styles.volumeImage}>
           <svg className={styles.volumeSvg}>
-            <use href="/img/icon/sprite.svg#iconvolume"></use>
+            <use href="/img/icon/sprite.svg#icon-volume"></use>
           </svg>
         </div>
         <div className={classNames(styles.volumeProgress, styles._btn)}>

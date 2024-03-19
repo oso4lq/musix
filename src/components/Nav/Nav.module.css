@@ -1,7 +1,11 @@
 .mainNav {
     width: 244px;
-    background-color: #181818;
+    background-color: #1C1C1C;
     padding: 20px 0 20px 36px;
+  }
+
+  .openNav {
+    background-color: #1C1C1C;
   }
 
   .navLogo {

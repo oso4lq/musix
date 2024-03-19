@@ -158,11 +158,17 @@
     line-height: 24px;
     color: #696969;
   }
-  
+
+  .trackTime {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    gap: 16px;
+  }
+
   .trackTimeSvg {
     width: 14px;
     height: 12px;
-    margin-right: 17px;
     fill: transparent;
     stroke: #696969;
   }

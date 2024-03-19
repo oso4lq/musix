@@ -1,3 +1,4 @@
+import React from "react";
 import classNames from "classnames";
 import styles from "./CenterBlock.module.css";
 import { ContentPlaylist } from "@components/ContentPlaylist";
@@ -41,7 +42,7 @@ export default function CenterBlock() {
             </svg>
           </div>
         </div>
-        <ContentPlaylist />
+        < ContentPlaylist />
       </div>
     </div>
   );
