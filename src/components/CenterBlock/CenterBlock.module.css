@@ -10,7 +10,7 @@
   .centerBlockSearch {
     width: 100%;
     border-bottom: 1px solid #4e4e4e;
-    margin-bottom: 51px;
+    margin-bottom: 46px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -44,7 +44,7 @@
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    margin-bottom: 51px;
+    margin-bottom: 46px;
   }
   
   .centerBlockContent {
@@ -96,26 +96,12 @@
     stroke: #696969;
   }
   
-  .col01 {
-    width: 447px;
-  }
-  
-  .col02 {
-    width: 321px;
-  }
-  
-  .col03 {
-    width: 245px;
-  }
-  
   .col04 {
-    width: 60px;
-    text-align: end;}
+    text-align: center;}
 
     .contentTitle {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
+        display: inline-grid;
+        grid-template-columns: [line1] 50% [line2] 20% [line3] 20% [line4] 7% [line5] 3%;     
         -webkit-box-orient: horizontal;
         -webkit-box-direction: normal;
         -ms-flex-direction: row;
