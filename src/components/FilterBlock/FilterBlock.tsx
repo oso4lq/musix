@@ -6,10 +6,10 @@ import { artists, genres, years } from "./data";
 import { trackType } from "@/types/types";
 
 type FilterBlockProps = {
-  tracks: trackType[];
+  trackList: trackType[];
 };
 
-const FilterBlock = ({ tracks }: FilterBlockProps) => {
+const FilterBlock = ({ trackList }: FilterBlockProps) => {
 
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
   const handleFilterClick = (newFilter: string) => {

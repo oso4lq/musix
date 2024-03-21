@@ -4,22 +4,24 @@ import classNames from "classnames";
 
 type PlayListItemProps = {
   name: string;
-  time: number;
   author: string;
   album: string;
+  // time: number;
+  duration: number;
   setTrack: () => void;
 };
 
 export default function PlayListItem({
   name,
-  time,
   author,
   album,
+  // time,
+  duration,
   setTrack,
 }: PlayListItemProps) {
 
-  let minutes = Math.floor(time / 60);
-  let seconds = (time % 60).toString().padStart(2, "0");
+  let minutes = Math.floor(duration / 60);
+  let seconds = Math.floor(duration % 60).toString().padStart(2, "0");
 
   return (
     <div onClick={setTrack} className={classNames(styles.playlistItem, styles.playlistTrack, styles.track)}>

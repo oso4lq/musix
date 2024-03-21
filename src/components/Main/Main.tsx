@@ -16,8 +16,8 @@ export default function Main() {
         <CenterBlock setTrack={setTrack} />
         <MainSlideBar />
       </main>
-      {/* {track && <Bar tracks={track} />} */}
-      <Bar tracks={track} />
+      {track && <Bar track={track} />}
+      {/* <Bar tracks={track} /> */}
       <footer className="footer"></footer>
     </>
   );

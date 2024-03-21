@@ -621,6 +621,8 @@
   overflow: hidden;
   transition: height 0.2s;
   background: linear-gradient(to right, var(--progress-color) var(--value), var(--progress-bg-color) var(--value));
+  opacity: 0.5;
+  z-index: 2;
 }
 
 /* .styledProgressInput:hover {
@@ -688,6 +690,49 @@
   
   .BarVolume_volumeProgressLine__YSWbA {
     width: 109px;
+    height: 8px;
+    background-color: #797979;
+    border-radius: 4px;
+    position: relative;
+  }
+  
+  .BarVolume_volumeProgressLine__YSWbA input[type="range"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+         appearance: none;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .BarVolume_volumeProgressLine__YSWbA input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #1A1A1A;
+    border: 2px solid #1A1A1A;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+  }
+  
+  .BarVolume_volumeProgressLine__YSWbA input[type="range"]::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #1A1A1A;
+    border: 2px solid #1A1A1A;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
   }
 /*!*****************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./src/components/Bar/Bar.module.css ***!
@@ -711,12 +756,12 @@
     left: 10px;
     color: #ffffff;
 
-    width: 50px;
+    width: 200px;
     height: 8px;
     font-size: 10px;
     /* background: #2e2e2e; */
     transition: 0.2s;
-    z-index: 2;
+    z-index: 1;
   }
   
   .Bar_barPlayerBlock__eJOFH {

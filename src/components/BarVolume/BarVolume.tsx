@@ -2,10 +2,14 @@ import styles from "./BarVolume.module.css";
 import classNames from "classnames";
 import { useState } from "react";
 
-export default function BarVolume({ handleVolume }) {
+type BarVolumeProps = {
+  handleVolume: any;
+};
+
+export default function BarVolume({ handleVolume }: BarVolumeProps) {
 
   const [volume, setVolume] = useState("");
-  const onChange = (e) => {
+  const onChange = (e: any) => {
     let newVolume = e.target.value;
     setVolume(newVolume);
     handleVolume(+newVolume)

@@ -1,28 +1,53 @@
 import styles from "./ContentPlaylist.module.css";
 import classNames from "classnames";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { PlayListItem } from "@components/PlayListItem";
 import { trackType } from "@/types/types";
 
 type ContentPlayListProps = {
-  tracks: trackType[];
+  trackList: trackType[];
   setTrack: (param: trackType) => void;
 };
 
 const ContentPlaylist = ({
-  tracks,
+  trackList,
   setTrack,
 }: ContentPlayListProps) => {
+
+  const [trackDurations, setTrackDurations] = useState<{ [key: string]: number }>({});
+  const audioRefs = useRef<{ [key: string]: HTMLAudioElement }>({});
+
+  useEffect(() => {
+    const durations: { [key: string]: number } = {};
+    trackList.forEach((track) => {
+      const audio = new Audio(track.track_file);
+      audio.addEventListener('loadedmetadata', () => {
+        durations[track.id] = audio.duration;
+        setTrackDurations({ ...durations });
+      });
+      audioRefs.current[track.id] = audio;
+    });
+
+    return () => {
+      Object.values(audioRefs.current).forEach((audio) => {
+        audio.pause();
+        audio.removeAttribute('src');
+        audio.load();
+      });
+    };
+  }, [trackList]);
+
   return (
     <div className={classNames(styles.contentPlaylist, styles.playlist)}>
-      {tracks.map((e) => (
+      {trackList.map((track) => (
         <PlayListItem
-          key={e.id}
-          setTrack={() => setTrack(e)}
-          name={e.name}
-          author={e.author}
-          album={e.album}
-          time={e.duration_in_seconds}
+          key={track.id}
+          setTrack={() => setTrack(track)}
+          name={track.name}
+          author={track.author}
+          album={track.album}
+          // time={track.duration_in_seconds}
+          duration={trackDurations[track.id]}
         />
       ))
       }

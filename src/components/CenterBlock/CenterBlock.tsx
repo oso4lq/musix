@@ -12,9 +12,9 @@ type CenterBlockProps = {
 
 export default function CenterBlock({ setTrack }: CenterBlockProps) {
 
-  const [tracks, setTracks] = useState([]);
+  const [trackList, setTrackList] = useState([]);
   useEffect(() => {
-    getTracks().then((data) => setTracks(data));
+    getTracks().then((data) => setTrackList(data));
   }, []);
 
   return (
@@ -31,7 +31,7 @@ export default function CenterBlock({ setTrack }: CenterBlockProps) {
         />
       </div>
       <h2 className={styles.centerBlockH2}>Tracks</h2>
-      <FilterBlock tracks={tracks} />
+      <FilterBlock trackList={trackList} />
       <div
         className={classNames(
           styles.centerBlockContent,
@@ -55,7 +55,7 @@ export default function CenterBlock({ setTrack }: CenterBlockProps) {
           </div>
           <div></div>
         </div>
-        <ContentPlaylist tracks={tracks} setTrack={setTrack} />
+        <ContentPlaylist trackList={trackList} setTrack={setTrack} />
       </div>
     </div>
   );

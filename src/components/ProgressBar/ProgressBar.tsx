@@ -4,6 +4,7 @@ type Props = {
   max: number | string | undefined;
   onChange: (value: any) => void;
 };
+
 export default function ProgressBar({ value, max, onChange }: Props) {
   const handleChange = (e: any) => {
     const newValue = e.target.value
