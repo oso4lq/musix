@@ -93,7 +93,7 @@ export default function Bar({ track }: BarProps) {
         {/* PROGRESS TIME, OVERLAY */}
         <div className={styles.barPlayerProgress}>
           {/* {track && currentTime && `${formatTime(currentTime)} / ${formatTime(audioRef.current ? audioRef.current.duration : track?.duration_in_seconds)}`} */}
-          {track && currentTime !== undefined && audioRef.current && audioRef.current.duration !== undefined && (
+          {track && isPlaying && currentTime !== undefined && audioRef.current && audioRef.current.duration !== undefined && (
             <>
               {formatTime(currentTime)} / {formatTime(audioRef.current.duration)}
             </>
