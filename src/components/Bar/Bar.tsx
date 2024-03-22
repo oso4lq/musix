@@ -64,7 +64,7 @@ export default function Bar({ track }: BarProps) {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.code === "Space") {
-        event.preventDefault(); // prevent scrolling
+        event.preventDefault();
         togglePlay();
       }
     };

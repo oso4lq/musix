@@ -7,7 +7,6 @@ type PlayListItemProps = {
   name: string;
   author: string;
   album: string;
-  // time: number;
   duration: number;
   setTrack: () => void;
 };
@@ -16,7 +15,6 @@ export default function PlayListItem({
   name,
   author,
   album,
-  // time,
   duration,
   setTrack,
 }: PlayListItemProps) {
