@@ -23,16 +23,16 @@ export default function BarVolume({ handleVolume }: BarVolumeProps) {
             <use href="/img/icon/sprite.svg#icon-volume"></use>
           </svg>
         </div>
-        <div className={classNames(styles.volumeProgress, styles._btn)}>
+        <div className={styles.volumeProgress}>
           <input
-            value={volume}
-            onChange={onChange}
-            step={1}
-            min={0}
-            max={100}
-            className={classNames(styles.volumeProgressLine, styles._btn)}
+            className={styles.volumeProgressLine}
             type="range"
             name="range"
+            min={0}
+            value={volume}
+            max={100}
+            onChange={onChange}
+            step={1}
           />
         </div>
       </div>
