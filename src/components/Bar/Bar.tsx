@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ProgressBar } from "@/components/ProgressBar";
 import { BarVolume } from "@/components/BarVolume";
 import { trackType } from "@/types/types";
+import { formatTime } from "@/lib/formatTime";
 
 type BarProps = {
   track: trackType | null;
@@ -12,30 +13,41 @@ type BarProps = {
 export default function Bar({ track }: BarProps) {
   // get the track
   const audioRef = useRef<null | HTMLAudioElement>(null);
+  // helpers
   const [isPlaying, setIsPlaying] = useState(true);
   const [isLooped, setIsLooped] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
-  // format duration in seconds to mins:secs
-  const formatTime = (time: number | null) => {
-    if (time) {
-      const minutes = Math.floor(time / 60);
-      const seconds = Math.floor(time % 60).toString().padStart(2, "0");
-      return `${minutes}:${seconds}`;
+
+  // play the track on click
+  const playTrack = () => {
+    if (audioRef.current) {
+      audioRef.current.play();
+      setIsPlaying(true);
+    }
+  }
+  useEffect(() => {
+    if (track && audioRef.current) {
+      audioRef.current.src = track.track_file;
+      playTrack();
+    }
+  }, [track]);
+
+  // follow the track progress
+  const progressTrack = (value: any) => {
+    setCurrentTime(value);
+    if (audioRef.current) {
+      audioRef.current.currentTime = value;
     }
   };
-
-  useEffect(() => {
-    audioRef.current?.play();
-  }, []);
+  const updateTime = () => {
+    setCurrentTime(audioRef.current!.currentTime);
+  };
   useEffect(() => {
     audioRef.current?.addEventListener("timeupdate", updateTime);
     return () => {
       audioRef.current?.removeEventListener("timeupdate", updateTime);
     };
   }, []);
-  const updateTime = () => {
-    setCurrentTime(audioRef.current!.currentTime);
-  };
 
   // handle play/pause
   const togglePlay = () => {
@@ -46,13 +58,6 @@ export default function Bar({ track }: BarProps) {
         audioRef.current.play();
       }
       setIsPlaying(prev => !prev);
-    }
-  };
-  // follows the track progress
-  const progressTrack = (value: any) => {
-    setCurrentTime(value);
-    if (audioRef.current) {
-      audioRef.current.currentTime = value;
     }
   };
 
@@ -93,7 +98,7 @@ export default function Bar({ track }: BarProps) {
         {/* PROGRESS TIME, OVERLAY */}
         <div className={styles.barPlayerProgress}>
           {/* {track && currentTime && `${formatTime(currentTime)} / ${formatTime(audioRef.current ? audioRef.current.duration : track?.duration_in_seconds)}`} */}
-          {track && isPlaying && currentTime !== undefined && audioRef.current && audioRef.current.duration !== undefined && (
+          {track && currentTime !== undefined && audioRef.current && audioRef.current.duration !== undefined && (
             <>
               {formatTime(currentTime)} / {formatTime(audioRef.current.duration)}
             </>

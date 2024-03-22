@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./PlayListItem.module.css";
 import classNames from "classnames";
+import { formatTime } from "@/lib/formatTime";
 
 type PlayListItemProps = {
   name: string;
@@ -20,8 +21,7 @@ export default function PlayListItem({
   setTrack,
 }: PlayListItemProps) {
 
-  let minutes = Math.floor(duration / 60);
-  let seconds = Math.floor(duration % 60).toString().padStart(2, "0");
+  const trackDuration = formatTime(duration);
 
   return (
     <div onClick={setTrack} className={classNames(styles.playlistItem, styles.playlistTrack, styles.track)}>
@@ -43,7 +43,7 @@ export default function PlayListItem({
       </div>
       <div className={styles.trackTime}>
         <span className={classNames(styles.trackText, styles.trackTextSecondary, styles.trackTextRight)}>
-          {`${minutes}:${seconds}`}
+          {trackDuration}
         </span>
       </div>
       <div>
