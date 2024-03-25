@@ -33,19 +33,11 @@
   --progress-color: #FFF;
   --progress-bg-color: #797979;
 
-  margin: 0;
-  width: 100%;
-  height: var(--progress-height);
   -webkit-appearance: none;
   appearance: none;
-  cursor: pointer;
   background: transparent;
-  position: relative;
-  overflow: hidden;
-  transition: height 0.2s;
-  /* background: linear-gradient(to right, #FFF 0%, #FFF var(--value), var(--progress-bg-color) var(--value), var(--progress-bg-color) 100%); */
-  background: linear-gradient(to right, var(--progress-color) var(--value), var(--progress-bg-color) var(--value) 100%);
-  z-index: 2;
+  cursor: pointer;
+  width: 100%;
 }
 
 .volumeProgressLine::-webkit-slider-runnable-track {
@@ -54,21 +46,12 @@
 }
 
 .volumeProgressLine::-webkit-slider-thumb {
-  --thumb-height: 10px;
-  --thumb-width: 10px;
-  position: relative;
-  top: -1px;
-  /* -webkit-appearance: none; */
-  /* width: var(--thumb-width);
-  height: var(--thumb-height);
-  border-radius: 50%;
-  background: #1A1A1A;
-  cursor: pointer;
   -webkit-appearance: none;
-  appearance: none; */
-  width: var(--thumb-width, var(--thumb-height));
-    box-shadow: calc(-100vmax - var(--thumb-width, var(--thumb-height))) 0 0
-      100vmax var(--progress-color);
+  height: 12px;
+  width: 12px;
+  border-radius: 6px;
+  background-color: var(--progress-color);
+  margin-top: -4px;
 }
 
 .volumeProgressLine::-moz-range-track {
@@ -77,12 +60,8 @@
 }
 
 .volumeProgressLine::-moz-range-thumb {
-  position: relative;
-  top: -1px;
-
-  width: 12px;
   height: 12px;
-  border-radius: 50%;
+  width: 12px;
+  border: none;
   background: var(--progress-color);
-  cursor: pointer;
 }
