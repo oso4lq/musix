@@ -25,7 +25,7 @@ export default function BarVolume({ handleVolume }: BarVolumeProps) {
         </div>
         <div className={styles.volumeProgress}>
           <input
-            className={styles.volumeProgressLine}
+            className={classNames(styles.volumeProgressLine, styles.sliderProgress)}
             type="range"
             name="range"
             min={0}
