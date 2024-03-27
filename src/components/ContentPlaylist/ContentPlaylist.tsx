@@ -1,34 +1,55 @@
-import React from "react";
 import styles from "./ContentPlaylist.module.css";
 import classNames from "classnames";
+import React, { useEffect, useRef, useState } from "react";
 import { PlayListItem } from "@components/PlayListItem";
-import { getTracks } from "@/api";
+import { trackType } from "@/types/types";
 
-async function ContentPlaylist() {
+type ContentPlayListProps = {
+  trackList: trackType[];
+  setTrack: (param: trackType) => void;
+};
 
-  let playlistArray: trackType[];
-  try {
-    playlistArray = await getTracks();
-  }
-  catch (error) {
-    console.error('Error getting the playlist', error);
-    playlistArray = [];
-  }
+const ContentPlaylist = ({
+  trackList,
+  setTrack,
+}: ContentPlayListProps) => {
+
+  const [trackDurations, setTrackDurations] = useState<{ [key: string]: number }>({});
+  const audioRefs = useRef<{ [key: string]: HTMLAudioElement }>({});
+
+  useEffect(() => {
+    const durations: { [key: string]: number } = {};
+    trackList.forEach((track) => {
+      const audio = new Audio(track.track_file);
+      audio.addEventListener('loadedmetadata', () => {
+        durations[track.id] = audio.duration;
+        setTrackDurations({ ...durations });
+      });
+      audioRefs.current[track.id] = audio;
+    });
+
+    return () => {
+      Object.values(audioRefs.current).forEach((audio) => {
+        audio.pause();
+        audio.removeAttribute('src');
+        audio.load();
+      });
+    };
+  }, [trackList]);
 
   return (
     <div className={classNames(styles.contentPlaylist, styles.playlist)}>
-      {/* {playlistArray ? ( */}
-      {
-        playlistArray.map((e, index) => (
-          <PlayListItem
-            key={index}
-            e={e}
-          />
-        ))
+      {trackList.map((track) => (
+        <PlayListItem
+          key={track.id}
+          setTrack={() => setTrack(track)}
+          name={track.name}
+          author={track.author}
+          album={track.album}
+          duration={trackDurations[track.id]}
+        />
+      ))
       }
-      {/* ) : (
-        <p className={styles.playlistTitleCol}>Loading tracks...</p>
-      )} */}
     </div>
   );
 };

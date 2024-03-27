@@ -1,40 +1,53 @@
 import React from "react";
 import styles from "./PlayListItem.module.css";
 import classNames from "classnames";
+import { formatTime } from "@/lib/formatTime";
 
-export default function PlayListItem({ e }: { e: trackType }) {
+type PlayListItemProps = {
+  name: string;
+  author: string;
+  album: string;
+  duration: number;
+  setTrack: () => void;
+};
+
+export default function PlayListItem({
+  name,
+  author,
+  album,
+  duration,
+  setTrack,
+}: PlayListItemProps) {
+
+  const trackDuration = formatTime(duration);
 
   return (
-    <div className={styles.playlistItem}>
-      <div className={classNames(styles.playlistTrack, styles.track)}>
-        <div className={styles.trackTitle}>
-          <div className={styles.trackTitleImage}>
-            <svg className={styles.trackTitleSvg}>
-              <use href="/img/icon/sprite.svg#icon-note"></use>
-            </svg>
-          </div>
-          <div className={styles.trackTitleText}>
-            <a className={styles.trackTitleLink} href="http://">
-              {e.name} <span className={styles.trackTitleSpan}></span>
-            </a>
-          </div>
-        </div>
-        <div className={styles.trackAuthor}>
-          <a className={styles.trackAuthorLink} href="http://">
-            {e.author}
-          </a>
-        </div>
-        <div className={styles.trackAlbum}>
-          <a className={styles.trackAlbumLink} href="http://">
-            {e.album}
-          </a>
-        </div>
-        <div className={styles.trackTime}>
-          <span className={styles.trackTimeText}>{e.duration_in_seconds}</span>
-          <svg className={styles.trackTimeSvg}>
-            <use href="/img/icon/sprite.svg#icon-like"></use>
+    <div onClick={setTrack} className={classNames(styles.playlistItem, styles.playlistTrack, styles.track)}>
+      <div className={styles.trackTitle}>
+        <div className={styles.trackTitleImage}>
+          <svg className={styles.trackTitleSvg}>
+            <use href="/img/icon/sprite.svg#icon-note"></use>
           </svg>
         </div>
+        <div className={styles.trackTitle}>
+          <span className={classNames(styles.trackText, styles.trackTextLeft)}>{name}</span>
+        </div>
+      </div>
+      <div className={styles.trackAuthor}>
+        <span className={classNames(styles.trackText, styles.trackTextSecondary)}>{author}</span>
+      </div>
+      <div className={styles.trackAlbum}>
+        <span className={classNames(styles.trackText, styles.trackTextSecondary)}>{album}</span>
+      </div>
+      <div className={styles.trackTime}>
+        <span className={classNames(styles.trackText, styles.trackTextSecondary, styles.trackTextRight)}>
+          {trackDuration}
+        </span>
+      </div>
+      <div>
+        <svg className={styles.trackTimeSvg}>
+          <use href="/img/icon/sprite.svg#icon-like"></use>
+        </svg>
       </div>
     </div>
   );

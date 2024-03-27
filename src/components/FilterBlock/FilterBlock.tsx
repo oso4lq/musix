@@ -1,13 +1,15 @@
 import styles from "./FilterBlock.module.css";
 import classNames from "classnames";
-import { useContext, useState } from "react";
-// import { TracksContext } from "@/contexts/tracks-context";
+import { useState } from "react";
 import FilterBlockItem from "../FilterBlockItem/FilterBlockItem";
 import { artists, genres, years } from "./data";
+import { trackType } from "@/types/types";
 
-const FilterBlock: React.FC = () => {
+type FilterBlockProps = {
+  trackList: trackType[];
+};
 
-  // const { tracks } = useContext(TracksContext);
+const FilterBlock = ({ trackList }: FilterBlockProps) => {
 
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
   const handleFilterClick = (newFilter: string) => {
