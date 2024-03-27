@@ -184,7 +184,7 @@
     width: 100%;
     margin-bottom: 12px;
     display: inline-grid;
-    grid-template-columns: [line1] 50% [line2] 20% [line3] 20% [line4] 7% [line5] 3%;
+    grid-template-columns: [line1] 10% [line2] 30% [line3] 20% [line4] 20% [line5] 7% [line6] 3%;
      }
   
   .PlayListItem_playlistTrack__J4N1U {
@@ -203,13 +203,28 @@
   .PlayListItem_trackTitleImage__nolK8 {
     width: 51px;
     height: 51px;
-    padding: 16px;
+    padding: 0px;
     background: #313131;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-right: 17px;
   }
+  .PlayListItem_trackTitleImageSelected__gvkTZ {
+    background: #D9B6FF;
+    opacity: 0.3;
+  }
+  .PlayListItem_trackTitleImageAnimated__ETMvi{
+    animation: PlayListItem_trackTitleImageAnimated__ETMvi ease-in-out 1.4s infinite;
+  }
+  @keyframes PlayListItem_trackTitleImageAnimated__ETMvi{
+    0% {
+      opacity: 0.3;
+    }
+    50% {
+      transform: scale(0.8);
+      opacity: 0.6;
+    }}
   
   .PlayListItem_trackTitleSvg__yn2pf {
     width: 18px;
@@ -217,7 +232,7 @@
     fill: transparent;
     stroke: #4e4e4e;
   }
-  
+
   .PlayListItem_trackTitleSpan___b4bt {
     font-style: normal;
     font-weight: 400;
@@ -606,7 +621,7 @@
   \*********************************************************************************************************************************************************************************************************************************************************************************************/
 .ProgressBar_styledProgressInput__CIZZK {
   --progress-height: 12px;
-  --progress-color: rgb(0, 123, 255);
+  --progress-color: #AD61FF;
   --progress-bg-color: #2e2e2e;
 
   margin: 0;
@@ -624,10 +639,6 @@
   opacity: 0.5;
   z-index: 2;
 }
-
-/* .styledProgressInput:hover {
-  --progress-height: 14px;
-} */
 
 .ProgressBar_styledProgressInput__CIZZK::-webkit-slider-runnable-track {
   height: var(--progress-height);
