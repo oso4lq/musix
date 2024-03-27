@@ -10,7 +10,8 @@ type CenterBlockProps = {
   setTrack: (param: trackType) => void;
 };
 
-export default function CenterBlock({ setTrack }: CenterBlockProps) {
+// export default function CenterBlock({ setTrack }: CenterBlockProps) {
+export default function CenterBlock() {
 
   const [trackList, setTrackList] = useState([]);
   useEffect(() => {
@@ -55,7 +56,8 @@ export default function CenterBlock({ setTrack }: CenterBlockProps) {
           </div>
           <div></div>
         </div>
-        <ContentPlaylist trackList={trackList} setTrack={setTrack} />
+        {/* <ContentPlaylist trackList={trackList} setTrack={setTrack} /> */}
+        <ContentPlaylist trackList={trackList} />
       </div>
     </div>
   );

@@ -2,7 +2,7 @@
     width: 100%;
     margin-bottom: 12px;
     display: inline-grid;
-    grid-template-columns: [line1] 50% [line2] 20% [line3] 20% [line4] 7% [line5] 3%;
+    grid-template-columns: [line1] 10% [line2] 30% [line3] 20% [line4] 20% [line5] 7% [line6] 3%;
      }
   
   .playlistTrack {
@@ -35,7 +35,7 @@
   .trackTitleImage {
     width: 51px;
     height: 51px;
-    padding: 16px;
+    padding: 0px;
     background: #313131;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -48,6 +48,21 @@
     justify-content: center;
     margin-right: 17px;
   }
+  .trackTitleImageSelected {
+    background: #D9B6FF;
+    opacity: 0.3;
+  }
+  .trackTitleImageAnimated{
+    animation: trackTitleImageAnimated ease-in-out 1.4s infinite;
+  }
+  @keyframes trackTitleImageAnimated{
+    0% {
+      opacity: 0.3;
+    }
+    50% {
+      transform: scale(0.8);
+      opacity: 0.6;
+    }}
   
   .trackTitleSvg {
     width: 18px;
@@ -55,7 +70,7 @@
     fill: transparent;
     stroke: #4e4e4e;
   }
-  
+
   .trackTitleSpan {
     font-style: normal;
     font-weight: 400;

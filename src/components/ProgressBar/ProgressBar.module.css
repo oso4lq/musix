@@ -1,6 +1,6 @@
 .styledProgressInput {
   --progress-height: 12px;
-  --progress-color: rgb(0, 123, 255);
+  --progress-color: #AD61FF;
   --progress-bg-color: #2e2e2e;
 
   margin: 0;
@@ -17,10 +17,6 @@
   opacity: 0.5;
   z-index: 2;
 }
-
-/* .styledProgressInput:hover {
-  --progress-height: 14px;
-} */
 
 .styledProgressInput::-webkit-slider-runnable-track {
   height: var(--progress-height);
