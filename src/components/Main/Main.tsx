@@ -7,8 +7,6 @@ import { Bar } from "@components/Bar";
 import { useAppSelector } from "@/store/store";
 
 export default function Main() {
-  // const [track, setTrack] = useState<trackType | null>(null);
-
   const { track } = useAppSelector((state) => state.tracks)
   return (
     <>
@@ -18,7 +16,6 @@ export default function Main() {
         <MainSlideBar />
       </main>
       {track && <Bar />}
-      {/* <Bar/> */}
       <footer className="footer"></footer>
     </>
   );
