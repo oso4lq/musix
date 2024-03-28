@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./PlayListItem.module.css";
 import classNames from "classnames";
 import { formatTime } from "@/lib/formatTime";
-import { useAppSelector } from "@/store/store";
+import { useAppSelector } from "@/hooks";
 
 type PlayListItemProps = {
   name: string;

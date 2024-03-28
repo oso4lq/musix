@@ -4,7 +4,7 @@ import { Nav } from "@components/Nav";
 import { CenterBlock } from "@/components/CenterBlock";
 import { MainSlideBar } from "@components/MainSlideBar";
 import { Bar } from "@components/Bar";
-import { useAppSelector } from "@/store/store";
+import { useAppSelector } from "@/hooks";
 
 export default function Main() {
   const { track } = useAppSelector((state) => state.tracks)

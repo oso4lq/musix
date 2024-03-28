@@ -11,21 +11,12 @@ export async function getTracks() {
             }
         }
         const data = await response.json();
-        console.log(data);
         return data;
     } catch (error) {
         console.warn(error);
         throw error;
     }
 }
-
-// async function getData() {
-//     const response = await fetch(API_URL + "track/all/");
-//     if (!response.ok) {
-//         throw new Error('Error while getting data');
-//     }
-//     return response.json();
-// }
 
 //  DRAFT. add authorisation
 // export async function addTrack({ X }) {

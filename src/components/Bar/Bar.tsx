@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ProgressBar } from "@/components/ProgressBar";
 import { BarVolume } from "@/components/BarVolume";
 import { formatTime } from "@/lib/formatTime";
-import { useAppDispatch, useAppSelector } from "@/store/store";
+import { useAppDispatch, useAppSelector } from "@/hooks";
 import {
   setPlay, setPause,
   setNextTrack, setPrevTrack,

@@ -3,7 +3,7 @@ import classNames from "classnames";
 import React, { useEffect, useRef, useState } from "react";
 import { PlayListItem } from "@components/PlayListItem";
 import { trackType } from "@/types/types";
-import { useAppDispatch, useAppSelector } from "@/store/store";
+import { useAppDispatch, useAppSelector } from "@/hooks";
 import { setCurrentTrack, setPlayList } from "@/store/features/tracksSlice";
 
 type ContentPlayListProps = {
