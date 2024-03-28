@@ -39,6 +39,8 @@ const tracksSlice = createSlice({
         },
         setNextTrack: (state) => {
             const playList = state.isShuffle ? state.shufflePlayList : state.playList;
+            console.log(state.isShuffle)
+            console.log(playList)
             const index = playList.findIndex((track) => track.id === state.track?.id)
             const nextIndex = index + 1
             if (playList[nextIndex]) {
@@ -56,9 +58,11 @@ const tracksSlice = createSlice({
         // features
         setShuffle: (state, action) => {
             state.isShuffle = action.payload
+            console.log(action.payload)
             if (action.payload) {
                 const playList = [...state.playList]
                 playList.sort(() => Math.random() - 0.5);
+                console.log(playList)
                 state.shufflePlayList = playList
             }
         },
