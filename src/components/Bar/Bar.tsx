@@ -123,7 +123,7 @@ export default function Bar() {
   };
 
   return (
-    <div className={styles.bar}>
+    <div className={classNames(styles.bar, {[styles.displayTrue]: track})}>
       <div className={styles.barContent}>
 
         {/* LOADED TRACK DATA */}

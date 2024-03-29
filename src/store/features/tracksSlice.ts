@@ -7,7 +7,7 @@ type TracksStateType = {
     isPlaying: boolean,
     isShuffle: boolean,
     shufflePlayList: trackType[]
-}
+};
 
 const initialState: TracksStateType = {
     track: null,
@@ -15,7 +15,19 @@ const initialState: TracksStateType = {
     isPlaying: false,
     isShuffle: false,
     shufflePlayList: []
-}
+};
+
+const switchTrack = (direction: number) => {
+    return (state: TracksStateType) => {
+        const currentTracks = state.isShuffle ? state.shufflePlayList : state.playList;
+        let newIndex = currentTracks.findIndex(item => item.id === state.track?.id) + direction;
+
+        newIndex = (newIndex + currentTracks.length) % currentTracks.length;
+
+        state.track = currentTracks[newIndex];
+        state.isPlaying = true;
+    }
+};
 
 const tracksSlice = createSlice({
     name: 'tracks',
@@ -37,32 +49,14 @@ const tracksSlice = createSlice({
         setPause: (state) => {
             state.isPlaying = false
         },
-        setNextTrack: (state) => {
-            const playList = state.isShuffle ? state.shufflePlayList : state.playList;
-            console.log(state.isShuffle)
-            console.log(playList)
-            const index = playList.findIndex((track) => track.id === state.track?.id)
-            const nextIndex = index + 1
-            if (playList[nextIndex]) {
-                state.track = playList[nextIndex]
-            }
-        },
-        setPrevTrack: (state) => {
-            const playList = state.isShuffle ? state.shufflePlayList : state.playList;
-            const index = playList.findIndex((track) => track.id === state.track?.id)
-            const prevIndex = index - 1
-            if (playList[prevIndex]) {
-                state.track = playList[prevIndex]
-            }
-        },
+        setNextTrack: switchTrack(1),
+        setPrevTrack: switchTrack(-1),
         // features
         setShuffle: (state, action) => {
             state.isShuffle = action.payload
-            console.log(action.payload)
             if (action.payload) {
                 const playList = [...state.playList]
                 playList.sort(() => Math.random() - 0.5);
-                console.log(playList)
                 state.shufflePlayList = playList
             }
         },

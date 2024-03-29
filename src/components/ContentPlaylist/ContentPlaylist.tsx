@@ -5,15 +5,15 @@ import { PlayListItem } from "@components/PlayListItem";
 import { trackType } from "@/types/types";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { setCurrentTrack, setPlayList } from "@/store/features/tracksSlice";
+import { getTracks } from "@/api";
 
-type ContentPlayListProps = {
-  trackList: trackType[];
-};
+const ContentPlaylist = () => {
 
-const ContentPlaylist = ({
-  trackList,
-}: ContentPlayListProps) => {
-
+  // get the tracklist from API
+  const [trackList, setTrackList] = useState<trackType[]>([]);
+  useEffect(() => {
+    getTracks().then((data) => setTrackList(data));
+  }, []);
   // Redux tools: set the track playing
   const dispatcher = useAppDispatch();
   const { track } = useAppSelector((state) => state.tracks);
@@ -27,7 +27,7 @@ const ContentPlaylist = ({
   const audioRefs = useRef<{ [key: string]: HTMLAudioElement }>({});
   useEffect(() => {
     const durations: { [key: string]: number } = {};
-    trackList.forEach((track) => {
+    trackList?.forEach((track: trackType) => {
       const audio = new Audio(track.track_file);
       audio.addEventListener('loadedmetadata', () => {
         durations[track.id] = audio.duration;
@@ -46,7 +46,7 @@ const ContentPlaylist = ({
 
   return (
     <div className={classNames(styles.contentPlaylist, styles.playlist)}>
-      {trackList.map((trackR) => (
+      {trackList?.map((trackR: trackType) => (
         <PlayListItem
           key={trackR.id}
           name={trackR.name}
