@@ -14,5 +14,5 @@ export default function ReduxProvider({
         storeRef.current = makeStore();
     }
 
-    return <Provider store={storeRef.current}> <>{children}</> </Provider>;
+    return <Provider store={storeRef.current}><>{children}</></Provider>;
 }
