@@ -1,4 +1,4 @@
-'use client';
+"use client"
 
 import Link from "next/link";
 import styles from "../app/not-found.module.css";

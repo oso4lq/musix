@@ -1,3 +1,5 @@
+"use client"
+
 import styles from "./ContentPlaylist.module.css";
 import classNames from "classnames";
 import React, { useEffect, useRef, useState } from "react";
@@ -56,8 +58,7 @@ const ContentPlaylist = () => {
           setTrack={() => handleTrack(trackR)}
           isSetTrack={trackR.id === track?.id}
         />
-      ))
-      }
+      ))}
     </div>
   );
 };
