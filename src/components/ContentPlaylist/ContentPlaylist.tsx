@@ -15,7 +15,9 @@ const ContentPlaylist = () => {
   const playList = useAppSelector((state) => state.tracks.playList);
   const searchPlayList = useAppSelector((state) => state.tracks.searchPlaylist);
   const { track } = useAppSelector((state) => state.tracks);
-
+  const isSearch = useAppSelector((state) => state.tracks.isSearch);
+  console.log("content" + isSearch);
+  console.log(searchPlayList);
   // get the tracklist from API
   useEffect(() => {
     getTracks().then((data) => {
@@ -29,7 +31,7 @@ const ContentPlaylist = () => {
   };
 
   // determine which tracklist to render, default or search
-  const tracksToRender = searchPlayList.length > 0 ? searchPlayList : playList;
+  const tracksToRender = isSearch ? searchPlayList : playList;
 
   // add a duration from audio props to each track
   const [trackDurations, setTrackDurations] = useState<{ [key: string]: number }>({});
@@ -55,17 +57,21 @@ const ContentPlaylist = () => {
 
   return (
     <div className={classNames(styles.contentPlaylist, styles.playlist)}>
-      {tracksToRender?.map((trackR: trackType) => (
-        <PlayListItem
-          key={trackR.id}
-          name={trackR.name}
-          author={trackR.author}
-          album={trackR.album}
-          duration={trackDurations[trackR.id]}
-          setTrack={() => handleTrack(trackR)}
-          isSetTrack={trackR.id === track?.id}
-        />
-      ))}
+      {isSearch && searchPlayList.length === 0 ? (
+        <p className={styles.playlistTitleCol}>No tracks found</p>
+      ) : (
+        tracksToRender.map((trackR: trackType) => (
+          <PlayListItem
+            key={trackR.id}
+            name={trackR.name}
+            author={trackR.author}
+            album={trackR.album}
+            duration={trackDurations[trackR.id]}
+            setTrack={() => handleTrack(trackR)}
+            isSetTrack={trackR.id === track?.id}
+          />
+        ))
+      )}
     </div>
   );
 };

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Fuse from 'fuse.js';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { trackType } from '@/types/types';
-import { setSearchPlayList } from '@/store/features/tracksSlice';
+import { setIsSearchFalse, setIsSearchTrue, setSearchPlayList } from '@/store/features/tracksSlice';
 
 const SearchBar = () => {
     const dispatcher = useAppDispatch();
@@ -26,10 +26,12 @@ const SearchBar = () => {
 
     // start the search
     const handleSearch = (query: string) => {
+        dispatcher(setIsSearchTrue());
         if (!fuse) return [];
         // searchbar state empty
         if (query === '') {
             dispatcher(setSearchPlayList([]));
+            dispatcher(setIsSearchFalse());
             return;
         }
         // define the search result

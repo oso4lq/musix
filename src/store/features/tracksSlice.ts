@@ -7,7 +7,8 @@ type TracksStateType = {
     isPlaying: boolean,
     isShuffle: boolean,
     shufflePlayList: trackType[],
-    searchPlaylist: trackType[]
+    searchPlaylist: trackType[],
+    isSearch: boolean
 };
 
 const initialState: TracksStateType = {
@@ -16,7 +17,8 @@ const initialState: TracksStateType = {
     isPlaying: false,
     isShuffle: false,
     shufflePlayList: [],
-    searchPlaylist: []
+    searchPlaylist: [],
+    isSearch: false
 };
 
 const switchTrack = (direction: number) => {
@@ -65,8 +67,16 @@ const tracksSlice = createSlice({
         setSearchPlayList: (state, action) => {
             state.searchPlaylist = action.payload;
         },
+        setIsSearchTrue: (state) => {
+            console.log('true');
+            state.isSearch = true;
+        },
+        setIsSearchFalse: (state) => {
+            console.log('false');
+            state.isSearch = false;
+        },
     }
 })
 
-export const { setCurrentTrack, setPlayList, setPlay, setPause, setNextTrack, setPrevTrack, setShuffle, setSearchPlayList } = tracksSlice.actions;
+export const { setCurrentTrack, setPlayList, setPlay, setPause, setNextTrack, setPrevTrack, setShuffle, setSearchPlayList, setIsSearchTrue, setIsSearchFalse } = tracksSlice.actions;
 export const tracksReducer = tracksSlice.reducer;

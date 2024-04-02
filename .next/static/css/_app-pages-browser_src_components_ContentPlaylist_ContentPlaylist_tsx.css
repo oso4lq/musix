@@ -135,7 +135,7 @@
     line-height: 24px;
     letter-spacing: 2px;
     color: #696969;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
   }
   
   .ContentPlaylist_playlistTitleSvg__xElih {
