@@ -2,9 +2,13 @@ import classNames from "classnames";
 import styles from "./CenterBlock.module.css";
 import React from "react";
 import { FilterBlock } from "@/components/FilterBlock";
-import { ContentPlaylist } from "@components/ContentPlaylist";
+import dynamic from "next/dynamic";
 
 export default function CenterBlock() {
+
+  const ContentPlaylistWithCustomLoading = dynamic(() => import("../ContentPlaylist/ContentPlaylist"), {
+    loading: () => <p>Loading...</p>,
+  })
 
   return (
     <div className={classNames(styles.mainCenterBlock, styles.centerBlock)}>
@@ -44,7 +48,7 @@ export default function CenterBlock() {
           </div>
           <div></div>
         </div>
-        <ContentPlaylist />
+        <ContentPlaylistWithCustomLoading />
       </div>
     </div>
   );

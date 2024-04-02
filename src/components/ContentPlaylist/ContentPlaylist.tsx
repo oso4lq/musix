@@ -21,9 +21,8 @@ const ContentPlaylist = () => {
   const { track } = useAppSelector((state) => state.tracks);
   const handleTrack = (trackR: trackType) => {
     dispatcher(setCurrentTrack(trackR));
-    dispatcher(setPlayList(trackList));
   };
-
+  dispatcher(setPlayList(trackList));
   // add a duration from audio props to each track
   const [trackDurations, setTrackDurations] = useState<{ [key: string]: number }>({});
   const audioRefs = useRef<{ [key: string]: HTMLAudioElement }>({});

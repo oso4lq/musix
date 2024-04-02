@@ -1,9 +1,9 @@
-export const artists = [
+export const authors = [
     { id: 1, name: "A1", },
     { id: 2, name: "A2", },
     { id: 3, name: "A3", },
 ]
-export const years = [
+export const release_dates = [
     { id: 1, name: "Y1", },
     { id: 2, name: "Y2", },
     { id: 3, name: "Y3", },

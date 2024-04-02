@@ -5,7 +5,7 @@ type FilterItemProps = {
     children: string;
     onClick: () => void;
     isOpened: boolean;
-    list: Array<{ id: number; name: string }>;
+    list: Array<string>;
 };
 
 export default function FilterBlockItem({
@@ -36,11 +36,13 @@ export default function FilterBlockItem({
                     <div className={styles.filterBy}>
                         {list.length > 0 ? (
                             <ul>
-                                {list.map((e) => <li
-                                    key={e.id}
-                                    className={styles.filterByP}>
-                                    {e.name}
-                                </li>)}
+                                {list.map((e, index) => (
+                                    <li
+                                        key={index}
+                                        className={styles.filterByP}>
+                                        {e}
+                                    </li>
+                                ))}
                             </ul>
                         ) : (
                             <p className={styles.playlistTitleCol}>No data...</p>
