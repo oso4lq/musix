@@ -1,3 +1,5 @@
+"use client"
+
 import styles from "./BarVolume.module.css";
 import classNames from "classnames";
 import { useState } from "react";
