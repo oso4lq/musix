@@ -1,15 +1,21 @@
 "use client"
 
-import styles from "./FilterBlock.module.css";
 import classNames from "classnames";
+import styles from "./FilterBlock.module.css";
 import { useState } from "react";
 import FilterBlockItem from "../FilterBlockItem/FilterBlockItem";
 import { useAppSelector } from "@/hooks";
 import { trackType } from "@/types/types";
 
 const FilterBlock = () => {
-  const playList = useAppSelector((state) => state.tracks.playList);
 
+  // opens filter
+  const [activeFilter, setActiveFilter] = useState<keyof trackType | null>(null);
+  const handleFilterClick = (newFilter: keyof trackType) => {
+    setActiveFilter((prev) => (newFilter === prev ? null : newFilter));
+  };
+  const playList = useAppSelector((state) => state.tracks.playList);
+  // returns unique values depenging on the key
   const getUniqueValues = (property: keyof trackType) => {
     return playList
       ? Array.from(new Set(playList.map((track: trackType) => track[property])))
@@ -27,11 +33,6 @@ const FilterBlock = () => {
         .filter((year, index, self) => self.indexOf(year) === index)
         .sort((a, b) => a.localeCompare(b))
       : [];
-  };
-
-  const [activeFilter, setActiveFilter] = useState<keyof trackType | null>(null);
-  const handleFilterClick = (newFilter: keyof trackType) => {
-    setActiveFilter((prev) => (newFilter === prev ? null : newFilter));
   };
 
   return (
