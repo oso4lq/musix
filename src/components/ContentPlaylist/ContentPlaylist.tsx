@@ -3,32 +3,40 @@
 import styles from "./ContentPlaylist.module.css";
 import classNames from "classnames";
 import React, { useEffect, useRef, useState } from "react";
-import { PlayListItem } from "@components/PlayListItem";
 import { trackType } from "@/types/types";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { setCurrentTrack, setPlayList } from "@/store/features/tracksSlice";
 import { getTracks } from "@/api";
+import { PlayListItem } from "@components/PlayListItem";
 
 const ContentPlaylist = () => {
 
-  // get the tracklist from API
-  const [trackList, setTrackList] = useState<trackType[]>([]);
-  useEffect(() => {
-    getTracks().then((data) => setTrackList(data));
-  }, []);
-  // Redux tools: set the track playing
   const dispatcher = useAppDispatch();
+  const playList = useAppSelector((state) => state.tracks.playList);
+  const searchPlayList = useAppSelector((state) => state.tracks.searchPlaylist);
   const { track } = useAppSelector((state) => state.tracks);
+
+  // get the tracklist from API
+  useEffect(() => {
+    getTracks().then((data) => {
+      dispatcher(setPlayList(data));
+    });
+  }, [dispatcher]);
+
+  // Redux tools: set the track playing
   const handleTrack = (trackR: trackType) => {
     dispatcher(setCurrentTrack(trackR));
   };
-  dispatcher(setPlayList(trackList));
+
+  // determine which tracklist to render, default or search
+  const tracksToRender = searchPlayList.length > 0 ? searchPlayList : playList;
+
   // add a duration from audio props to each track
   const [trackDurations, setTrackDurations] = useState<{ [key: string]: number }>({});
   const audioRefs = useRef<{ [key: string]: HTMLAudioElement }>({});
   useEffect(() => {
     const durations: { [key: string]: number } = {};
-    trackList?.forEach((track: trackType) => {
+    playList?.forEach((track: trackType) => {
       const audio = new Audio(track.track_file);
       audio.addEventListener('loadedmetadata', () => {
         durations[track.id] = audio.duration;
@@ -43,11 +51,11 @@ const ContentPlaylist = () => {
         audio.load();
       });
     };
-  }, [trackList]);
+  }, [playList]);
 
   return (
     <div className={classNames(styles.contentPlaylist, styles.playlist)}>
-      {trackList?.map((trackR: trackType) => (
+      {tracksToRender?.map((trackR: trackType) => (
         <PlayListItem
           key={trackR.id}
           name={trackR.name}
