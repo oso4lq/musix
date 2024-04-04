@@ -1,5 +1,6 @@
 import { trackType } from "@/types/types"
-import { createSlice } from "@reduxjs/toolkit"
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
+import { RootState } from "../store";
 
 type TracksStateType = {
     track: null | trackType,
@@ -8,7 +9,8 @@ type TracksStateType = {
     isShuffle: boolean,
     shufflePlayList: trackType[],
     searchPlaylist: trackType[],
-    isSearch: boolean
+    isSearch: boolean,
+    activeFilters: Record<keyof trackType, string | null> & void
 };
 
 const initialState: TracksStateType = {
@@ -18,7 +20,12 @@ const initialState: TracksStateType = {
     isShuffle: false,
     shufflePlayList: [],
     searchPlaylist: [],
-    isSearch: false
+    isSearch: false,
+    activeFilters: {
+        author: null,
+        release_date: null,
+        genre: null,
+    }
 };
 
 const switchTrack = (direction: number) => {
@@ -75,8 +82,22 @@ const tracksSlice = createSlice({
             console.log('false');
             state.isSearch = false;
         },
+        setActiveFilter: (state, action: PayloadAction<{ filterKey: keyof trackType; filterValue: string | null }>) => {
+            const { filterKey, filterValue } = action.payload;
+            console.log('filterKey ' + filterKey);
+            console.log('filterValue ' + filterValue);
+            state.activeFilters[filterKey] = filterValue;
+        },
+        clearActiveFilters: (state) => {
+            state.activeFilters = {
+                author: null,
+                release_date: null,
+                genre: null,
+            };
+        },
     }
 })
 
-export const { setCurrentTrack, setPlayList, setPlay, setPause, setNextTrack, setPrevTrack, setShuffle, setSearchPlayList, setIsSearchTrue, setIsSearchFalse } = tracksSlice.actions;
+export const { setCurrentTrack, setPlayList, setPlay, setPause, setNextTrack, setPrevTrack, setShuffle, setSearchPlayList, setIsSearchTrue, setIsSearchFalse, setActiveFilter, clearActiveFilters } = tracksSlice.actions;
+export const selectActiveFilters = (state: RootState) => state.tracks.activeFilters;
 export const tracksReducer = tracksSlice.reducer;
