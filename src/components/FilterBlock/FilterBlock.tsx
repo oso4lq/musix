@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from '@/hooks';
 import { trackType } from '@/types/types';
 import { clearActiveFilters, setActiveFilter } from '@/store/features/tracksSlice';
 import { getUniqueValues } from "@/lib/getUniqueValues";
-import FilterBlockItem from '../FilterBlockItem/FilterBlockItem';
+import { FilterBlockItem } from '@components/FilterBlockItem';
 
 const FilterBlock = () => {
   const dispatcher = useAppDispatch();
@@ -79,8 +79,10 @@ const FilterBlock = () => {
         Genre
       </FilterBlockItem>
 
-      <button onClick={() => discardFilters()}>
-        Discard filters
+      <button
+        className={styles.discardButton}
+        onClick={() => discardFilters()}>
+        x
       </button>
 
     </div>

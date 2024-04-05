@@ -518,7 +518,7 @@
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./src/components/FilterBlock/FilterBlock.module.css ***!
   \*********************************************************************************************************************************************************************************************************************************************************************************************/
 .FilterBlock_centerBlockFilter__UsY_5 {
-    height: 10px;
+    height: 40px;
     display: flex;
     gap: 12px;
     flex-direction: row;
@@ -538,6 +538,25 @@
     font-size: 16px;
     line-height: 24px;
     margin-right: 15px;
+  }
+
+  .FilterBlock_discardButton__yq_BL {
+    color: #900000;
+    background-color: transparent;
+    font-style: normal;
+    font-weight: 200;
+    font-size: 10px;
+    border: 1px solid #900000;
+    border-radius: 60px;
+    padding: 4px 8px;
+    margin-bottom: 8px;
+    transition: 0.2s;
+  }
+  .FilterBlock_discardButton__yq_BL:hover {
+    border-color: #ff0000;
+    color: #fff;
+    background-color: #ff0000;
+    opacity: 0.7;
   }
 /*!*****************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./src/components/SearchBar/SearchBar.module.css ***!
@@ -658,7 +677,7 @@
     font-size: 52px;
     line-height: 72px;
     letter-spacing: -0.8px;
-    margin-bottom: 38px;
+    margin-bottom: 12px;
   }
     
   .CenterBlock_centerBlockContent__wlogo {
