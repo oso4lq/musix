@@ -7,15 +7,20 @@ type TracksStateType = {
     isPlaying: boolean,
     isShuffle: boolean,
     shufflePlayList: trackType[],
+
     searchPlaylist: trackType[],
     isSearch: boolean,
+
     filteredPlaylist: trackType[],
+
     activeFilters: {
         authors: Array<string>,
         release_dates: null | string,
         genres: Array<string>,
-        searchValue: string
-    }
+        searchValue: string,
+    },
+
+    playlistNumber: number | null,
 };
 
 const initialState: TracksStateType = {
@@ -24,15 +29,20 @@ const initialState: TracksStateType = {
     isPlaying: false,
     isShuffle: false,
     shufflePlayList: [],
+
     searchPlaylist: [],
     isSearch: false,
+
     filteredPlaylist: [],
+
     activeFilters: {
         authors: [],
         release_dates: "default",
         genres: [],
-        searchValue: ""
-    }
+        searchValue: "",
+    },
+
+    playlistNumber: null,
 };
 
 const switchTrack = (direction: number) => {
@@ -121,6 +131,12 @@ const tracksSlice = createSlice({
             // console.log('release_dates: ' + state.activeFilters.release_dates);
             // console.log('genres: ' + state.activeFilters.genres);
         },
+
+        // set chosen playlist
+        setPlaylistNumber: (state, action) => {
+            state.playlistNumber = action.payload;
+            // console.log('playlist number ' + state.playlistNumber + " set");
+        },
     }
 })
 
@@ -134,6 +150,8 @@ export const {
     // search bat
     setSearchPlayList, setIsSearchTrue, setIsSearchFalse,
     // filters
-    setActiveFilter, clearActiveFilters
+    setActiveFilter, clearActiveFilters,
+    // set chosen playlist
+    setPlaylistNumber,
 } = tracksSlice.actions;
 export const tracksReducer = tracksSlice.reducer;

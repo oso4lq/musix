@@ -19,12 +19,15 @@ const ContentPlaylist = () => {
 
   const activeFilters = useAppSelector((state) => state.tracks.activeFilters);
 
+  // check playlist number 1/2/3
+  const playlistNumber = useAppSelector((state) => state.tracks.playlistNumber);
   // get the tracklist from API
   useEffect(() => {
-    getTracks().then((data) => {
-      dispatcher(setPlayList(data));
+    getTracks(playlistNumber).then((data) => {
+      // check if the data is wrapped
+      data.items ? dispatcher(setPlayList(data.items)) : dispatcher(setPlayList(data));
     });
-  }, [dispatcher]);
+  }, [dispatcher, playlistNumber]);
   // Redux tools: set the track playing
   const handleTrack = (trackR: trackType) => {
     dispatcher(setCurrentTrack(trackR));
