@@ -22,15 +22,15 @@
   .filterBy {
     display: block;
     position: absolute;
-    top: 260px;
+    top: 240px;
     left: 440px;
     background-color: #313131;
     width: 240px;
-    max-height: 386px;
+    max-height: 280px;
     overflow-y: auto;
     border-radius: 12px;
     padding: 34px;
-    z-index: 7;
+    z-index: 6;
     box-sizing: content-box; /* ??? */
   }
   .filterBy::-webkit-scrollbar {
@@ -51,8 +51,10 @@
     line-height: 24px;
     letter-spacing: 0em;
     text-align: left;
-    margin-bottom: 8px;
     list-style-type: none;
+  }
+  .filterByP:not(:last-child) {
+    margin-bottom: 8px;
   }
 
   .CountPopUp {
