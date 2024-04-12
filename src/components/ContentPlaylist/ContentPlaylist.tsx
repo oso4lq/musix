@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from '@/hooks';
 import { setCurrentTrack, setPlayList } from '@/store/features/tracksSlice';
 import { getTracks } from '@/api';
 import { PlayListItem } from '@components/PlayListItem';
+import { sortTracksByReleaseDate } from "@/lib/sortTracksByReleaseDate";
 
 const ContentPlaylist = () => {
 
@@ -72,29 +73,12 @@ const ContentPlaylist = () => {
     });
   };
 
-  // sort tracks by release date
-  const sortTracksByReleaseDate = (tracks: trackType[], order: string) => {
-    return tracks.sort((a, b) => {
-
-      const dateA = new Date(a.release_date).getTime();
-      const dateB = new Date(b.release_date).getTime();
-
-      switch (order) {
-        case 'New first':
-          return dateB - dateA;
-        case 'Old first':
-          return dateA - dateB;
-        default:
-          return 0;
-      }
-    });
-  };
-
   // useMemo to save the result of applied filters
   const filteredAndSortedPlaylist = useMemo(() => {
     const filteredTracks = filterTracks(tracksToRender);
 
     if (activeFilters.release_dates) {
+      console.log(sortTracksByReleaseDate(filteredTracks, activeFilters.release_dates));
       return sortTracksByReleaseDate(filteredTracks, activeFilters.release_dates);
     } else {
       return filteredTracks;
