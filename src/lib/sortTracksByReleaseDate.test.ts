@@ -1,6 +1,6 @@
 import { sortTracksByReleaseDate } from "./sortTracksByReleaseDate";
 
-let data = [
+const  data = [
     {
         "id": 8,
         "name": "Chase",

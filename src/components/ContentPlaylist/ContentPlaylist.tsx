@@ -78,7 +78,6 @@ const ContentPlaylist = () => {
     const filteredTracks = filterTracks(tracksToRender);
 
     if (activeFilters.release_dates) {
-      console.log(sortTracksByReleaseDate(filteredTracks, activeFilters.release_dates));
       return sortTracksByReleaseDate(filteredTracks, activeFilters.release_dates);
     } else {
       return filteredTracks;
