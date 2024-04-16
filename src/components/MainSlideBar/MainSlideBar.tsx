@@ -1,8 +1,13 @@
 import styles from "./MainSlideBar.module.css"
 import classNames from "classnames";
 import Image from "next/image";
+import Link from "next/link";
 
-export default function MainSlideBar() {
+type mainSideBarType = {
+  isSideBar: boolean
+}
+
+export default function MainSlideBar({ isSideBar }: mainSideBarType) {
   return (
     <div className={classNames(styles.mainSidebar, styles.sidebar)}>
       <div className={styles.sidebarPersonal}>
@@ -13,10 +18,11 @@ export default function MainSlideBar() {
           </svg>
         </div>
       </div>
+      {isSideBar && (
       <div className={styles.sidebarBlock}>
         <div className={styles.sidebarList}>
           <div className={styles.sidebarItem}>
-            <a className={styles.sidebarLink} href="#">
+            <Link href={"/tracks/1"}>
               <Image
                 width={250}
                 height={150}
@@ -24,10 +30,10 @@ export default function MainSlideBar() {
                 src="/img/playlist01.png"
                 alt="day's playlist"
               />
-            </a>
+            </Link>
           </div>
           <div className={styles.sidebarItem}>
-            <a className={styles.sidebarLink} href="#">
+            <Link href={"/tracks/2"}>
               <Image
                 width={250}
                 height={150}
@@ -35,10 +41,10 @@ export default function MainSlideBar() {
                 src="/img/playlist02.png"
                 alt="day's playlist"
               />
-            </a>
+            </Link>
           </div>
           <div className={styles.sidebarItem}>
-            <a className={styles.sidebarLink} href="#">
+            <Link href={"/tracks/3"}>
               <Image
                 width={250}
                 height={150}
@@ -46,10 +52,11 @@ export default function MainSlideBar() {
                 src="/img/playlist03.png"
                 alt="day's playlist"
               />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
+      )}
     </div>
   );
 }

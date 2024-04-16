@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from '@/hooks';
 import { setCurrentTrack, setPlayList } from '@/store/features/tracksSlice';
 import { getTracks } from '@/api';
 import { PlayListItem } from '@components/PlayListItem';
+import { sortTracksByReleaseDate } from "@/lib/sortTracksByReleaseDate";
 
 const ContentPlaylist = () => {
 
@@ -19,12 +20,15 @@ const ContentPlaylist = () => {
 
   const activeFilters = useAppSelector((state) => state.tracks.activeFilters);
 
+  // check playlist number 1/2/3
+  const playlistNumber = useAppSelector((state) => state.tracks.playlistNumber);
   // get the tracklist from API
   useEffect(() => {
-    getTracks().then((data) => {
-      dispatcher(setPlayList(data));
+    getTracks(playlistNumber).then((data) => {
+      // check if the data is wrapped
+      data.items ? dispatcher(setPlayList(data.items)) : dispatcher(setPlayList(data));
     });
-  }, [dispatcher]);
+  }, [dispatcher, playlistNumber]);
   // Redux tools: set the track playing
   const handleTrack = (trackR: trackType) => {
     dispatcher(setCurrentTrack(trackR));
@@ -66,24 +70,6 @@ const ContentPlaylist = () => {
       const isAuthorsMatch = activeFilters.authors.length === 0 || activeFilters.authors.includes(track.author);
       const isGenresMatch = activeFilters.genres.length === 0 || activeFilters.genres.includes(track.genre);
       return isAuthorsMatch && isGenresMatch;
-    });
-  };
-
-  // sort tracks by release date
-  const sortTracksByReleaseDate = (tracks: trackType[], order: string) => {
-    return tracks.sort((a, b) => {
-
-      const dateA = new Date(a.release_date).getTime();
-      const dateB = new Date(b.release_date).getTime();
-
-      switch (order) {
-        case 'New first':
-          return dateB - dateA;
-        case 'Old first':
-          return dateA - dateB;
-        default:
-          return 0;
-      }
     });
   };
 
