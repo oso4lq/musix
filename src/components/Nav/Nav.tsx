@@ -1,5 +1,6 @@
 "use client"
 
+import { useAppSelector } from "@/hooks";
 import styles from "./Nav.module.css";
 import classNames from "classnames";
 import Image from "next/image";
@@ -13,16 +14,20 @@ export default function Nav() {
     setIsOpened((prevState) => !prevState);
   };
 
+  const authState = useAppSelector((state) => state.auth.authState);
+
   return (
     <nav className={classNames(styles.mainNav, styles.nav)}>
       <div className={classNames(styles.navLogo, styles.logo)}>
-        <Image
-          alt="logo"
-          width={113}
-          height={17}
-          className={styles.logoImage}
-          src="/img/logo.png"
-        />
+        <Link href="/">
+          <Image
+            alt="logo"
+            width={113}
+            height={17}
+            className={styles.logoImage}
+            src="/img/logo.png"
+          />
+        </Link>
       </div>
       <div onClick={toggleMenu} className={classNames(styles.navBurger, styles.burger, isOpened ? styles.openNav : "")}>
         <span className={styles.burgerLine}></span>
@@ -38,10 +43,21 @@ export default function Nav() {
                   Main
                 </Link>
               </li>
-              <li className={styles.menuItem}>My playlist</li>
+
               <li className={styles.menuItem}>
-                <Link href="/signin">Sign In</Link>
+                <Link href="/myplaylist" className={styles.menuLink}>
+                  My playlist
+                </Link>
               </li>
+
+              {!authState && (
+                <li className={styles.menuItem}>
+                  <Link href="/signin" className={styles.menuLink}>
+                    Sign In
+                  </Link>
+                </li>
+              )}
+
             </ul>
           </div>
         )}
