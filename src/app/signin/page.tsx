@@ -6,10 +6,15 @@ import styles from "../signin/page.module.css";
 import classNames from "classnames";
 import FormWrapper from "@/components/FormWrapper/FormWrapper";
 import { useState } from "react";
-import { login } from "@/api";
-import { setAuthState, setAuthUserData } from "@/store/features/authSlice";
+import { getToken, login } from "@/api";
+import { setAuthState, setAuthUserData, setAuthUserToken } from "@/store/features/authSlice";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { useRouter } from "next/navigation";
+
+type userDataType = {
+  email: string;
+  password: string;
+};
 
 const SignIn = () => {
 
@@ -30,6 +35,16 @@ const SignIn = () => {
     return null;
   }
 
+  const handleToken = async (loginData: userDataType) => {
+    try {
+      await getToken(loginData).then((tokenData) => {
+        dispatcher(setAuthUserToken(tokenData.access));
+      });
+    } catch (error: any) {
+      console.error(error);
+    }
+  };
+
   const handleLogin = async (e: any) => {
     console.log("trying to log in with: " + loginData.email + " " + loginData.password);
     e.preventDefault();
@@ -38,9 +53,10 @@ const SignIn = () => {
         setHasError(true);
         throw new Error('Please fill in all the inputs.');
       }
-      await login(loginData).then((data) => {
-        dispatcher(setAuthUserData(data));
+      await login(loginData).then((userData) => {
+        dispatcher(setAuthUserData(userData));
         dispatcher(setAuthState());
+        handleToken(loginData);
       });
     } catch (error: any) {
       setHasError(error.message);

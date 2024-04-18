@@ -17,7 +17,6 @@ export default function MainSlideBar({ isSideBar }: mainSideBarType) {
   const username = useAppSelector((state) => state.auth.authUserData.username);
 
   const handleLogout = () => {
-    console.log("log out");
     dispatcher(logOut());
   }
 

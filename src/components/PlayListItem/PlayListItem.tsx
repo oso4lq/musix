@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./PlayListItem.module.css";
 import classNames from "classnames";
 import { formatTime } from "@/lib/formatTime";
 import { useAppSelector } from "@/hooks";
+import { addTrackToPlaylist, removeTrackFromPlaylist } from "@/api";
 
 type PlayListItemProps = {
+  id: number;
   name: string;
   author: string;
   album: string;
@@ -14,6 +16,7 @@ type PlayListItemProps = {
 };
 
 export default function PlayListItem({
+  id,
   name,
   author,
   album,
@@ -24,7 +27,25 @@ export default function PlayListItem({
 
   const trackDuration = formatTime(duration);
 
-  const { isPlaying } = useAppSelector((state) => state.tracks)
+  const { isPlaying } = useAppSelector((state) => state.tracks);
+
+  const [isLiked, setIsLiked] = useState(false);
+
+  const handleLikeTrack = async () => {
+    // add disable playing the track when (dis)like
+    setIsLiked((prevState) => !prevState);
+    try {
+      if (isLiked !== true) {
+        console.log("like track");
+        await addTrackToPlaylist(id);
+      } else {
+        console.log("dislike track");
+        await removeTrackFromPlaylist(id);
+      }
+    } catch (error: any) {
+      console.error(error);
+    }
+  };
 
   return (
     <div onClick={setTrack} className={classNames(styles.playlistItem, styles.playlistTrack, styles.track)}>
@@ -51,11 +72,17 @@ export default function PlayListItem({
           {trackDuration}
         </span>
       </div>
-      <div>
+
+      <div onClick={() => handleLikeTrack()}>
         <svg className={styles.trackTimeSvg}>
-          <use href="/img/icon/sprite.svg#icon-like"></use>
+          {isLiked ? (
+            <use href="/img/icon/sprite.svg#icon-liked"></use>
+          ) : (
+            <use href="/img/icon/sprite.svg#icon-like"></use>
+          )}
         </svg>
       </div>
+
     </div>
   );
 }

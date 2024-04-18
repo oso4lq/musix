@@ -92,6 +92,7 @@ const ContentPlaylist = () => {
         filteredAndSortedPlaylist.map((trackR: trackType) => (
           <PlayListItem
             key={trackR.id}
+            id={trackR.id}
             name={trackR.name}
             author={trackR.author}
             album={trackR.album}
