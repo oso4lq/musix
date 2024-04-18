@@ -16,7 +16,7 @@ type AuthStateType = {
 
 // Get the user data and token from localStorage if it exists, otherwise use default values
 const userDataFromLocalStorage: UserData | null = JSON.parse(localStorage.getItem('userData') || 'null');
-const userTokenFromLocalStorage: string | null = JSON.parse(localStorage.getItem('userToken') || 'null');
+const userTokenFromLocalStorage: string | null = localStorage.getItem('userToken') || 'null';
 
 const initialState: AuthStateType = {
   authState: userDataFromLocalStorage !== null,
@@ -60,7 +60,7 @@ const authSlice = createSlice({
     setAuthUserToken: (state, action: PayloadAction<string>) => {
       state.authUserToken = action.payload;
       console.log(state.authUserToken);
-      localStorage.setItem('userToken', JSON.stringify(action.payload));
+      localStorage.setItem('userToken', action.payload);
     },
   },
 },

@@ -99,6 +99,7 @@ const ContentPlaylist = () => {
             duration={trackDurations[trackR.id]}
             setTrack={() => handleTrack(trackR)}
             isSetTrack={trackR.id === track?.id}
+            stared_user={trackR.stared_user}
           />
         ))
       )}

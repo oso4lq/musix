@@ -4,6 +4,7 @@ import classNames from "classnames";
 import { formatTime } from "@/lib/formatTime";
 import { useAppSelector } from "@/hooks";
 import { addTrackToPlaylist, removeTrackFromPlaylist } from "@/api";
+import { userType } from "@/types/types";
 
 type PlayListItemProps = {
   id: number;
@@ -13,6 +14,7 @@ type PlayListItemProps = {
   duration: number;
   setTrack: () => void;
   isSetTrack: boolean;
+  stared_user: Array<userType> | null;
 };
 
 export default function PlayListItem({
@@ -23,23 +25,25 @@ export default function PlayListItem({
   duration,
   setTrack,
   isSetTrack,
+  stared_user,
 }: PlayListItemProps) {
 
   const trackDuration = formatTime(duration);
 
   const { isPlaying } = useAppSelector((state) => state.tracks);
 
-  const [isLiked, setIsLiked] = useState(false);
+  // check if the track is liked
+  const [isLiked, setIsLiked] = useState(
+    stared_user?.some(user => JSON.stringify(user) === localStorage.getItem('userData'))
+  );
 
   const handleLikeTrack = async () => {
     // add disable playing the track when (dis)like
     setIsLiked((prevState) => !prevState);
     try {
       if (isLiked !== true) {
-        console.log("like track");
         await addTrackToPlaylist(id);
       } else {
-        console.log("dislike track");
         await removeTrackFromPlaylist(id);
       }
     } catch (error: any) {
