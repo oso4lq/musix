@@ -70,12 +70,14 @@ const SignUp = () => {
   return (
     <FormWrapper>
       <div className={styles.modalLogo}>
-        <Image
-          width={140}
-          height={21}
-          src="/img/logo_modal.png"
-          alt="logo"
-        />
+        <Link href="/">
+          <Image
+            width={140}
+            height={21}
+            src="/img/logo_modal.png"
+            alt="logo"
+          />
+        </Link>
       </div>
       <input
         className={classNames(styles.modalInput, styles.login)}

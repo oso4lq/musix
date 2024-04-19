@@ -6,8 +6,9 @@ import dynamic from "next/dynamic";
 import { FilterBlock } from "@/components/FilterBlock";
 import { SearchBar } from "@/components/SearchBar";
 import { ContentTitle } from "@/components/ContentTitle";
-import { useAppDispatch } from "@/hooks";
+import { useAppDispatch, useAppSelector } from "@/hooks";
 import { setPlaylistNumber } from "@/store/features/tracksSlice";
+import Link from "next/link";
 
 type centerBlockType = {
   playlistID: string,
@@ -33,6 +34,9 @@ export default function CenterBlock({ playlistID, isFilter }: centerBlockType) {
       break;
     case "3":
       centerBlockTitle = "Indie Charge";
+      break;
+    case "liked":
+      centerBlockTitle = "My Playlist";
       break;
     default:
       centerBlockTitle = "Tracks";

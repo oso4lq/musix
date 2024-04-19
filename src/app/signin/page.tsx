@@ -7,7 +7,7 @@ import classNames from "classnames";
 import FormWrapper from "@/components/FormWrapper/FormWrapper";
 import { useState } from "react";
 import { getToken, login } from "@/api";
-import { setAuthState, setAuthUserData, setAuthUserToken } from "@/store/features/authSlice";
+import { setAuthRefreshToken, setAuthState, setAuthUserData, setAuthUserToken } from "@/store/features/authSlice";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { useRouter } from "next/navigation";
 
@@ -39,6 +39,7 @@ const SignIn = () => {
     try {
       await getToken(loginData).then((tokenData) => {
         dispatcher(setAuthUserToken(tokenData.access));
+        dispatcher(setAuthRefreshToken(tokenData.refresh));
       });
     } catch (error: any) {
       console.error(error);
@@ -78,12 +79,14 @@ const SignIn = () => {
   return (
     <FormWrapper>
       <div className={styles.modalLogo}>
-        <Image
-          width={140}
-          height={21}
-          src="/img/logo_modal.png"
-          alt="logo"
-        />
+        <Link href="/">
+          <Image
+            width={140}
+            height={21}
+            src="/img/logo_modal.png"
+            alt="logo"
+          />
+        </Link>
       </div>
       <div>osetr@fish.com</div>
       <div>abirvalg</div>

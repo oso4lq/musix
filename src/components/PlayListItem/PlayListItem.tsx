@@ -5,6 +5,7 @@ import { formatTime } from "@/lib/formatTime";
 import { useAppSelector } from "@/hooks";
 import { addTrackToPlaylist, removeTrackFromPlaylist } from "@/api";
 import { userType } from "@/types/types";
+import Link from "next/link";
 
 type PlayListItemProps = {
   id: number;
@@ -29,19 +30,34 @@ export default function PlayListItem({
 }: PlayListItemProps) {
 
   const trackDuration = formatTime(duration);
-
   const { isPlaying } = useAppSelector((state) => state.tracks);
 
-  // check if the track is liked
+  // popup message "user is not logged in"
+  const [showPopup, setShowPopup] = useState(false);
+  const showPopupMessage = () => {
+    setShowPopup(true);
+    setTimeout(() => {
+      setShowPopup(false);
+    }, 10000);
+  };
+
+  // check if the track is liked to render the liked state
   const [isLiked, setIsLiked] = useState(
-    stared_user?.some(user => JSON.stringify(user) === localStorage.getItem('userData'))
+    stared_user && stared_user?.some(user => JSON.stringify(user) === localStorage.getItem('userData'))
   );
 
-  const handleLikeTrack = async () => {
-    // add disable playing the track when (dis)like
-    setIsLiked((prevState) => !prevState);
+  const handleLikeTrack = async (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    event.stopPropagation();
+
+    if (!localStorage.getItem('userData')) {
+      showPopupMessage();
+      return;
+    }
+
+    setIsLiked(prevState => !prevState);
+
     try {
-      if (isLiked !== true) {
+      if (!isLiked) {
         await addTrackToPlaylist(id);
       } else {
         await removeTrackFromPlaylist(id);
@@ -50,6 +66,7 @@ export default function PlayListItem({
       console.error(error);
     }
   };
+
 
   return (
     <div onClick={setTrack} className={classNames(styles.playlistItem, styles.playlistTrack, styles.track)}>
@@ -60,24 +77,37 @@ export default function PlayListItem({
         </svg>
       </div>
 
-      <div className={styles.trackTitle}>
-        <div className={styles.trackTitle}>
-          <span className={classNames(styles.trackText, styles.trackTextLeft)}>{name}</span>
+      {!showPopup ? (
+        <div className={styles.trackInfo}>
+          <div className={styles.trackTitle}>
+            <div className={styles.trackTitle}>
+              <span className={classNames(styles.trackText, styles.trackTextLeft)}>{name}</span>
+            </div>
+          </div>
+          <div className={styles.trackAuthor}>
+            <span className={classNames(styles.trackText, styles.trackTextSecondary)}>{author}</span>
+          </div>
+          <div className={styles.trackAlbum}>
+            <span className={classNames(styles.trackText, styles.trackTextSecondary)}>{album}</span>
+          </div>
+          <div className={styles.trackTime}>
+            <span className={classNames(styles.trackText, styles.trackTextSecondary, styles.trackTextRight)}>
+              {trackDuration}
+            </span>
+          </div>
         </div>
-      </div>
-      <div className={styles.trackAuthor}>
-        <span className={classNames(styles.trackText, styles.trackTextSecondary)}>{author}</span>
-      </div>
-      <div className={styles.trackAlbum}>
-        <span className={classNames(styles.trackText, styles.trackTextSecondary)}>{album}</span>
-      </div>
-      <div className={styles.trackTime}>
-        <span className={classNames(styles.trackText, styles.trackTextSecondary, styles.trackTextRight)}>
-          {trackDuration}
-        </span>
-      </div>
+      ) : (
+        <div className={styles.popupSignIn}>
+          <p>You are not signed in</p>
+          <Link
+            href="/signin"
+            className={styles.linkSignIn}
+            onClick={(event) => event.stopPropagation()}
+          >Enter your account</Link>
+        </div>
+      )}
 
-      <div onClick={() => handleLikeTrack()}>
+      <div onClick={handleLikeTrack}>
         <svg className={styles.trackTimeSvg}>
           {isLiked ? (
             <use href="/img/icon/sprite.svg#icon-liked"></use>

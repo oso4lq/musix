@@ -27,24 +27,6 @@ export async function getTracks(playlistID: number | null) {
     };
 };
 
-// export async function getLikedTracks() {
-//     try {
-//         const response = await fetch(API_URL + TRACK + FAVORITE + ALL);
-//         if (!response.ok) {
-//             if (response.status === 401) {
-//                 throw new Error("No authorization");
-//             } else {
-//                 throw new Error(`HTTP error! Status: ${response.status}`);
-//             };
-//         };
-//         const data = await response.json();
-//         return data;
-//     } catch (error) {
-//         console.warn(error);
-//         throw error;
-//     };
-// };
-
 export async function getLikedTracks(userToken: string) {
     return fetch(API_URL + TRACK + FAVORITE + ALL, {
         method: "GET",
@@ -146,7 +128,7 @@ export async function getToken({ email, password }: getTokenProps) {
 };
 
 export async function refreshToken(refresh: string) {
-    return fetch(API_URL_USER + TOKEN, {
+    return fetch(API_URL_USER + TOKEN_REFRESH, {
         method: "POST",
         body: JSON.stringify({
             refresh: refresh,

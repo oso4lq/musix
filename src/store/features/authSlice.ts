@@ -12,11 +12,14 @@ type AuthStateType = {
   authState: boolean,
   authUserData: UserData;
   authUserToken?: string;
+  authRefreshToken?: string;
+  // noAuthLike: boolean;
 };
 
 // Get the user data and token from localStorage if it exists, otherwise use default values
 const userDataFromLocalStorage: UserData | null = JSON.parse(localStorage.getItem('userData') || 'null');
 const userTokenFromLocalStorage: string | null = localStorage.getItem('userToken') || 'null';
+const userRefreshTokenFromLocalStorage: string | null = localStorage.getItem('refreshToken') || 'null';
 
 const initialState: AuthStateType = {
   authState: userDataFromLocalStorage !== null,
@@ -28,6 +31,8 @@ const initialState: AuthStateType = {
     email: "",
   },
   authUserToken: userTokenFromLocalStorage || undefined,
+  authRefreshToken: userRefreshTokenFromLocalStorage || undefined,
+  // noAuthLike: false,
 };
 
 const authSlice = createSlice({
@@ -62,9 +67,19 @@ const authSlice = createSlice({
       console.log(state.authUserToken);
       localStorage.setItem('userToken', action.payload);
     },
+    // Set the refresh token to the state and save it to localStorage
+    setAuthRefreshToken: (state, action: PayloadAction<string>) => {
+      state.authRefreshToken = action.payload;
+      console.log(state.authRefreshToken);
+      localStorage.setItem('refreshToken', action.payload);
+    },
+    // setNoAuthLike: (state, action: PayloadAction<boolean>) => {
+    //   state.noAuthLike = action.payload;
+    //   console.log(state.noAuthLike);
+    // },
   },
 },
 );
 
-export const { setAuthState, logOut, setAuthUserData, setAuthUserToken } = authSlice.actions;
+export const { setAuthState, logOut, setAuthUserData, setAuthUserToken, setAuthRefreshToken } = authSlice.actions;
 export const authReducer = authSlice.reducer;
