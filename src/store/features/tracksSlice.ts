@@ -109,10 +109,6 @@ const tracksSlice = createSlice({
                 genres: action.payload.genres || state.activeFilters.genres,
                 searchValue: action.payload.searchValue || state.activeFilters.searchValue,
             };
-            // console.log('active filters:');
-            // console.log('authors: ' + state.activeFilters.authors);
-            // console.log('release_dates: ' + state.activeFilters.release_dates);
-            // console.log('genres: ' + state.activeFilters.genres);
             state.filteredPlaylist = state.playList.filter((track) => {
                 const isAuthors = state.activeFilters.authors.length > 0 ? state.activeFilters.authors.includes(track.author) : true;
                 const isGenres = state.activeFilters.genres.length > 0 ? state.activeFilters.genres.includes(track.genre) : true;
@@ -126,16 +122,12 @@ const tracksSlice = createSlice({
                 genres: [],
                 searchValue: "",
             };
-            // console.log('active filters:');
-            // console.log('authors: ' + state.activeFilters.authors);
-            // console.log('release_dates: ' + state.activeFilters.release_dates);
-            // console.log('genres: ' + state.activeFilters.genres);
         },
 
         // set chosen playlist
         setPlaylistNumber: (state, action) => {
             state.playlistNumber = action.payload;
-            // console.log('playlist number ' + state.playlistNumber + " set");
+            console.log('playlist number ' + state.playlistNumber + " set");
         },
     }
 })

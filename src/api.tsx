@@ -9,9 +9,9 @@ const SIGNUP = "signup/";
 const TOKEN = "token/";
 const TOKEN_REFRESH = "token/refresh/";
 
-export async function getTracks(playlistNumber: number | null) {
+export async function getTracks(playlistID: number | null) {
     try {
-        const response = await fetch(API_URL + (playlistNumber ? SELECTION + playlistNumber : (TRACK + ALL)));
+        const response = await fetch(API_URL + (playlistID ? (SELECTION + playlistID) : (TRACK + ALL)));
         if (!response.ok) {
             if (response.status === 401) {
                 throw new Error("No authorization");
@@ -27,22 +27,42 @@ export async function getTracks(playlistNumber: number | null) {
     };
 };
 
-export async function getLikedTracks() {
-    try {
-        const response = await fetch(API_URL + TRACK + FAVORITE + ALL);
-        if (!response.ok) {
-            if (response.status === 401) {
-                throw new Error("No authorization");
-            } else {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            };
+// export async function getLikedTracks() {
+//     try {
+//         const response = await fetch(API_URL + TRACK + FAVORITE + ALL);
+//         if (!response.ok) {
+//             if (response.status === 401) {
+//                 throw new Error("No authorization");
+//             } else {
+//                 throw new Error(`HTTP error! Status: ${response.status}`);
+//             };
+//         };
+//         const data = await response.json();
+//         return data;
+//     } catch (error) {
+//         console.warn(error);
+//         throw error;
+//     };
+// };
+
+export async function getLikedTracks(userToken: string) {
+    return fetch(API_URL + TRACK + FAVORITE + ALL, {
+        method: "GET",
+        headers: {
+            Authorization: `Bearer ${userToken}`,
+        },
+    }).then((response) => {
+        if (response.status === 400) {
+            throw new Error("Incorrect email or password.");
         };
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.warn(error);
-        throw error;
-    };
+        if (response.status === 401) {
+            throw new Error("Username not found.");
+        };
+        if (response.status === 500) {
+            throw new Error("Internal server error.");
+        };
+        return response.json();
+    });
 };
 
 type loginProps = {

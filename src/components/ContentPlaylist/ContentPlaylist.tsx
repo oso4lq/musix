@@ -6,7 +6,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { trackType } from '@/types/types';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { setCurrentTrack, setPlayList } from '@/store/features/tracksSlice';
-import { getTracks } from '@/api';
+import { getLikedTracks, getTracks } from '@/api';
 import { PlayListItem } from '@components/PlayListItem';
 import { sortTracksByReleaseDate } from "@/lib/sortTracksByReleaseDate";
 
@@ -16,19 +16,25 @@ const ContentPlaylist = () => {
   const playList = useAppSelector((state) => state.tracks.playList);
   const searchPlayList = useAppSelector((state) => state.tracks.searchPlaylist);
   const { track } = useAppSelector((state) => state.tracks);
+  const userToken = localStorage.getItem('userToken');
   const isSearch = useAppSelector((state) => state.tracks.isSearch);
-
   const activeFilters = useAppSelector((state) => state.tracks.activeFilters);
 
   // check playlist number 1/2/3
-  const playlistNumber = useAppSelector((state) => state.tracks.playlistNumber);
+  const playlistID = useAppSelector((state) => state.tracks.playlistNumber);
   // get the tracklist from API
   useEffect(() => {
-    getTracks(playlistNumber).then((data) => {
-      // check if the data is wrapped
-      data.items ? dispatcher(setPlayList(data.items)) : dispatcher(setPlayList(data));
-    });
-  }, [dispatcher, playlistNumber]);
+    if (playlistID === "liked") {
+      getLikedTracks(userToken).then((data) => {
+        dispatcher(setPlayList(data));
+      });
+    } else {
+      getTracks(playlistID).then((data) => {
+        // check if the data is wrapped
+        data.items ? dispatcher(setPlayList(data.items)) : dispatcher(setPlayList(data));
+      });
+    }
+  }, [dispatcher, playlistID]);
   // Redux tools: set the track playing
   const handleTrack = (trackR: trackType) => {
     dispatcher(setCurrentTrack(trackR));
