@@ -6,9 +6,10 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { trackType } from '@/types/types';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { setCurrentTrack, setPlayList } from '@/store/features/tracksSlice';
-import { getTracks } from '@/api';
+import { getLikedTracks, getTracks, refreshToken } from '@/api';
 import { PlayListItem } from '@components/PlayListItem';
 import { sortTracksByReleaseDate } from "@/lib/sortTracksByReleaseDate";
+import { setAuthUserToken } from "@/store/features/authSlice";
 
 const ContentPlaylist = () => {
 
@@ -16,19 +17,50 @@ const ContentPlaylist = () => {
   const playList = useAppSelector((state) => state.tracks.playList);
   const searchPlayList = useAppSelector((state) => state.tracks.searchPlaylist);
   const { track } = useAppSelector((state) => state.tracks);
+  const userToken = localStorage.getItem('userToken');
   const isSearch = useAppSelector((state) => state.tracks.isSearch);
-
   const activeFilters = useAppSelector((state) => state.tracks.activeFilters);
 
+  // get a new access token using the refresh token
+  const [tokenRefreshInterval, setTokenRefreshInterval] = useState<NodeJS.Timeout | null>(null);
+  const handleRefreshToken = async () => {
+    try {
+      const token = localStorage.getItem('refreshToken');
+      if (!token) return;
+      const refreshedToken = await refreshToken(token);
+      dispatcher(setAuthUserToken(refreshedToken.access));
+    } catch (error) {
+      console.error('Error refreshing token:', error);
+    }
+  };
+  // timer to refresh the token every 180 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleRefreshToken();
+    }, 180000);
+    setTokenRefreshInterval(interval);
+    return () => {
+      if (tokenRefreshInterval) clearInterval(tokenRefreshInterval);
+    };
+  }, []);
+
   // check playlist number 1/2/3
-  const playlistNumber = useAppSelector((state) => state.tracks.playlistNumber);
+  const playlistID = useAppSelector((state) => state.tracks.playlistNumber);
   // get the tracklist from API
   useEffect(() => {
-    getTracks(playlistNumber).then((data) => {
-      // check if the data is wrapped
-      data.items ? dispatcher(setPlayList(data.items)) : dispatcher(setPlayList(data));
-    });
-  }, [dispatcher, playlistNumber]);
+    if (userToken !== null) {
+      if (String(playlistID) === "liked") {
+        getLikedTracks(userToken).then((data) => {
+          dispatcher(setPlayList(data));
+        });
+      } else {
+        getTracks(playlistID).then((data) => {
+          // check if the data is wrapped
+          data.items ? dispatcher(setPlayList(data.items)) : dispatcher(setPlayList(data));
+        });
+      };
+    };
+  }, [dispatcher, playlistID]);
   // Redux tools: set the track playing
   const handleTrack = (trackR: trackType) => {
     dispatcher(setCurrentTrack(trackR));
@@ -92,12 +124,16 @@ const ContentPlaylist = () => {
         filteredAndSortedPlaylist.map((trackR: trackType) => (
           <PlayListItem
             key={trackR.id}
+            id={trackR.id}
             name={trackR.name}
             author={trackR.author}
             album={trackR.album}
             duration={trackDurations[trackR.id]}
             setTrack={() => handleTrack(trackR)}
             isSetTrack={trackR.id === track?.id}
+            stared_user={trackR.stared_user}
+            // @ts-ignore
+            playlistID={playlistID}
           />
         ))
       )}

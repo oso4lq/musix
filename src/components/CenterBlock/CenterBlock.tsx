@@ -6,6 +6,8 @@ import dynamic from "next/dynamic";
 import { FilterBlock } from "@/components/FilterBlock";
 import { SearchBar } from "@/components/SearchBar";
 import { ContentTitle } from "@/components/ContentTitle";
+import { useAppDispatch, useAppSelector } from "@/hooks";
+import { setPlaylistNumber } from "@/store/features/tracksSlice";
 
 type centerBlockType = {
   playlistID: string,
@@ -13,6 +15,9 @@ type centerBlockType = {
 };
 
 export default function CenterBlock({ playlistID, isFilter }: centerBlockType) {
+
+  const dispatcher = useAppDispatch();
+  dispatcher(setPlaylistNumber(playlistID));
 
   const ContentPlaylistWithCustomLoading = dynamic(() => import("../ContentPlaylist/ContentPlaylist"), {
     loading: () => <p className={styles.playlistTitleCol}>Loading...</p>,
@@ -28,6 +33,9 @@ export default function CenterBlock({ playlistID, isFilter }: centerBlockType) {
       break;
     case "3":
       centerBlockTitle = "Indie Charge";
+      break;
+    case "liked":
+      centerBlockTitle = "My Playlist";
       break;
     default:
       centerBlockTitle = "Tracks";

@@ -4,7 +4,11 @@ import Link from "next/link";
 import styles from "../app/not-found.module.css";
 import { useEffect } from 'react';
 
-export default function Error({ error, reset }) {
+export default function Error({
+    error,
+}: {
+    error: Error & { digest?: string };
+}) {
     useEffect(() => {
         console.error(error);
     }, [error]);

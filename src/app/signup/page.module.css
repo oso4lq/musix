@@ -3,23 +3,7 @@
     min-height: 100%;
     overflow: hidden;
   }
-  
-  .containerSignup {
-    max-width: 100%;
-    height: 100vh;
-    margin: 0 auto;
-    position: relative;
-    background-color: rgba(0, 0, 0, 0.85);
-  }
-  
-  .modalBtnSignupEnt:hover {
-    background-color: #3F007D;
-  }
-  
-  .modalBtnSignupEnt:active {
-    background-color: #271A58;
-  }
-  
+   
   .modalBlock {
     position: absolute;
     z-index: 2;
@@ -108,9 +92,9 @@
     letter-spacing: -0.05px;
     color: #D0CECE;
   }
-  
+
   .modalBtnSignupEnt {
-    width: 278px;
+    width: 70%;
     height: 62px;
     background-color: #580EA2;
     border-radius: 6px;
@@ -148,3 +132,70 @@
             justify-content: center;
   }
   
+  .modalBtnEnter {
+    color: #FFFFFF;
+    font-size: 18px;
+    width: 60%;
+    height: 52px;
+    background-color: #580ea2;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    border: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+  .modalBtnEnter {
+    width: 70%;
+  }
+  .modalBtnEnter:hover {
+    background-color: #3f007d;
+  }
+  .modalBtnEnter:active {
+    background-color: #271a58;
+  }
+
+  .modalBtnSignin {
+    width: 30%;
+    min-width: 60px;
+    height: 52px;
+    background-color: transparent;
+    border: 1px solid #d0cece;
+    border-radius: 6px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: -0.05px;
+    color: #000000;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+  .modalBtnSignin:hover {
+    background-color: #f4f5f6;
+  }
+  .modalBtnSignin:active {
+    background-color: #d9d9d9;
+  }
+    
+  
+
+  .buttonBox {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }

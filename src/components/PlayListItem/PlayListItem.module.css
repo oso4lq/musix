@@ -2,8 +2,15 @@
     width: 100%;
     margin-bottom: 12px;
     display: inline-grid;
-    grid-template-columns: [line1] 10% [line2] 30% [line3] 20% [line4] 20% [line5] 7% [line6] 3%;
+    /* grid-template-columns: [line1] 10% [line2] 30% [line3] 20% [line4] 20% [line5] 7% [line6] 3%; */
+    grid-template-columns: [line1] 10% [line2] 77% [line6] 3%;
      }
+  
+  .trackInfo {
+    width: 100%;
+    display: inline-grid;
+    grid-template-columns: [line1] 37% [line2] 25% [line3] 25% [line4] 13%;
+  }
   
   .playlistTrack {
     -webkit-box-orient: horizontal;
@@ -54,6 +61,20 @@
   }
   .trackTitleImageAnimated{
     animation: trackTitleImageAnimated ease-in-out 1.4s infinite;
+  }
+  .popupSignIn {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: #ffffff;
+    /* background-color: #f9f9f9; */
+    /* border: 1px solid #888; */
+    z-index: 3;
+    /* transition: 2s; */
+  }
+  .linkSignIn {
+    color: #AD61FF;
+    text-decoration: none;
   }
   @keyframes trackTitleImageAnimated{
     0% {
