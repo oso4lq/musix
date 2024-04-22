@@ -64,19 +64,13 @@ const authSlice = createSlice({
     // Set the token to the state and save it to localStorage
     setAuthUserToken: (state, action: PayloadAction<string>) => {
       state.authUserToken = action.payload;
-      console.log(state.authUserToken);
       localStorage.setItem('userToken', action.payload);
     },
     // Set the refresh token to the state and save it to localStorage
     setAuthRefreshToken: (state, action: PayloadAction<string>) => {
       state.authRefreshToken = action.payload;
-      console.log(state.authRefreshToken);
       localStorage.setItem('refreshToken', action.payload);
     },
-    // setNoAuthLike: (state, action: PayloadAction<boolean>) => {
-    //   state.noAuthLike = action.payload;
-    //   console.log(state.noAuthLike);
-    // },
   },
 },
 );

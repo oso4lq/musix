@@ -16,6 +16,7 @@ type PlayListItemProps = {
   setTrack: () => void;
   isSetTrack: boolean;
   stared_user: Array<userType> | null;
+  playlistID?: string;
 };
 
 export default function PlayListItem({
@@ -27,6 +28,7 @@ export default function PlayListItem({
   setTrack,
   isSetTrack,
   stared_user,
+  playlistID,
 }: PlayListItemProps) {
 
   const trackDuration = formatTime(duration);
@@ -42,9 +44,19 @@ export default function PlayListItem({
   };
 
   // check if the track is liked to render the liked state
-  const [isLiked, setIsLiked] = useState(
-    stared_user && stared_user?.some(user => JSON.stringify(user) === localStorage.getItem('userData'))
-  );
+  const [isLiked, setIsLiked] = useState(() => {
+    if (playlistID === "liked") {
+      return true; // true, if playlistID is "liked"
+    } else {
+      // otherwise, use the existing logic to determine if the track is liked
+      return (
+        stared_user &&
+        stared_user?.some(
+          (user) => JSON.stringify(user) === localStorage.getItem("userData")
+        )
+      );
+    }
+  });
 
   const handleLikeTrack = async (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     event.stopPropagation();

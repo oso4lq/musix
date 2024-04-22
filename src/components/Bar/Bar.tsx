@@ -61,7 +61,9 @@ export default function Bar() {
     }
   };
   const updateTime = () => {
-    setCurrentTime(audioRef.current!.currentTime);
+    if (audioRef.current) {
+      setCurrentTime(audioRef.current.currentTime);
+    }
   };
   useEffect(() => {
     audioRef.current?.addEventListener("timeupdate", updateTime);
@@ -125,7 +127,7 @@ export default function Bar() {
   };
 
   return (
-    <div className={classNames(styles.bar, {[styles.displayTrue]: track})}>
+    <div className={classNames(styles.bar, { [styles.displayTrue]: track })}>
       <div className={styles.barContent}>
 
         {/* LOADED TRACK DATA */}
@@ -160,7 +162,6 @@ export default function Bar() {
               {/* PLAY/PAUSE */}
               <div onClick={togglePlay} className={classNames(styles.playerBtnPlay, styles._btn)}>
                 <svg className={styles.playerBtnPlaySvg}>
-                  {/* ADD PAUSE SVG */}
                   {isPlaying ? (
                     <use
                       href="/img/icon/sprite.svg#icon-pause"
@@ -199,7 +200,6 @@ export default function Bar() {
                 className={classNames(styles.playerBtnShuffle, styles._btnIcon)}
               >
                 <svg className={styles.playerBtnShuffleSvg} onClick={() => dispatcher(setShuffle(!isShuffle))}>
-                  {/* CHECK ADD ICON <use href="/img/icon/sprite.svg#icon-shuffle"></use> */}
                   {isShuffle ? (
                     <use href="/img/icon/sprite.svg#icon-shuffleOn"></use>
                   ) : (
@@ -220,14 +220,10 @@ export default function Bar() {
                   </svg>
                 </div>
                 <div className={classNames(styles.trackPlayName, styles.trackPlayNameText)}>
-                  {/* <a className={styles.trackPlayAuthorLink} href="http://"> */}
                   {track?.name}
-                  {/* </a> */}
                 </div>
                 <div className={classNames(styles.trackPlayAuthor, styles.trackPlayAuthorText)}>
-                  {/* <a className={styles.trackPlayAlbumLink} href="http://"> */}
                   {track?.author}
-                  {/* </a> */}
                 </div>
               </div>
             </div>

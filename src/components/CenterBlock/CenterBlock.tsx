@@ -8,7 +8,6 @@ import { SearchBar } from "@/components/SearchBar";
 import { ContentTitle } from "@/components/ContentTitle";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { setPlaylistNumber } from "@/store/features/tracksSlice";
-import Link from "next/link";
 
 type centerBlockType = {
   playlistID: string,

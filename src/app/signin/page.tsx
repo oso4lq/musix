@@ -47,7 +47,6 @@ const SignIn = () => {
   };
 
   const handleLogin = async (e: any) => {
-    console.log("trying to log in with: " + loginData.email + " " + loginData.password);
     e.preventDefault();
     try {
       if (loginData.email === "" || loginData.password === "") {
@@ -116,9 +115,7 @@ const SignIn = () => {
             onClick={handleLogin}
           >
             <p>{hasError}</p>
-            {/* <Link href="/">Sign In</Link> */}
           </button>
-          {/* <p>{hasError}</p> */}
         </>
       ) : (
         <button
@@ -127,7 +124,6 @@ const SignIn = () => {
           onClick={handleLogin}
         >
           <p>Sign In</p>
-          {/* <Link href="/">Sign In</Link> */}
         </button>
       )}
 

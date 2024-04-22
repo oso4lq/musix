@@ -118,7 +118,7 @@ const ContentPlaylist = () => {
 
   return (
     <div className={classNames(styles.contentPlaylist, styles.playlist)}>
-      {isSearch || tracksToRender.length === 0 ? (
+      {isSearch && tracksToRender.length === 0 ? (
         <p className={styles.playlistTitleCol}>No tracks found</p>
       ) : (
         filteredAndSortedPlaylist.map((trackR: trackType) => (
@@ -132,6 +132,8 @@ const ContentPlaylist = () => {
             setTrack={() => handleTrack(trackR)}
             isSetTrack={trackR.id === track?.id}
             stared_user={trackR.stared_user}
+            // @ts-ignore
+            playlistID={playlistID}
           />
         ))
       )}

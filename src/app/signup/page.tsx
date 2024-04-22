@@ -122,9 +122,7 @@ const SignUp = () => {
               onClick={handleRegister}
             >
               <p>{hasError}</p>
-              {/* <Link href="/">Sign Up</Link> */}
             </button>
-            {/* <p>{hasError}</p> */}
           </>
         ) : (
           <button
@@ -133,12 +131,11 @@ const SignUp = () => {
             onClick={handleRegister}
           >
             <p>Sign Up</p>
-            {/* <Link href="/">Sign Up</Link> */}
           </button>
         )}
 
         <Link href="/signin" className={styles.modalBtnSignin}>
-          Sign IN
+          Sign In
         </Link>
       </div>
 

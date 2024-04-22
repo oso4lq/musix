@@ -94,11 +94,9 @@ const tracksSlice = createSlice({
             state.searchPlaylist = action.payload;
         },
         setIsSearchTrue: (state) => {
-            console.log('true');
             state.isSearch = true;
         },
         setIsSearchFalse: (state) => {
-            console.log('false');
             state.isSearch = false;
         },
         // filters
@@ -127,7 +125,6 @@ const tracksSlice = createSlice({
         // set chosen playlist
         setPlaylistNumber: (state, action) => {
             state.playlistNumber = action.payload;
-            console.log('playlist number ' + state.playlistNumber + " set");
         },
     }
 })
